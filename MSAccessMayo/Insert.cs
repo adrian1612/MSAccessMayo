@@ -19,6 +19,10 @@ namespace MSAccessMayo
         public Insert()
         {
             InitializeComponent();
+            notifyIcon1.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
+            notifyIcon1.Visible = true;
+            notifyIcon1.ShowBalloonTip(5000, "Message", "Please wait -Adrian Jaspio", ToolTipIcon.Info);
+
             LoadCustomer();
 
             var listAppr = new List<ComboBox>() { cbPreparedBy, cbApprovedBy, cbCheckedBy };
@@ -39,7 +43,9 @@ namespace MSAccessMayo
 
         private void Insert_Load(object sender, EventArgs e)
         {
+           
             UpdateCustomerFields();
+            notifyIcon1.Visible = false;
         }
 
         private void cbCustomer_SelectedIndexChanged(object sender, EventArgs e)

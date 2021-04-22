@@ -303,6 +303,111 @@ namespace MSAccessMayo
             }
             return name;
         }
+        private String tensCent(String digit)
+        {
+            int digt = Convert.ToInt32(digit);
+            String name = null;
+            switch (digt)
+            {
+                case 10:
+                    name = "10";
+                    break;
+                case 11:
+                    name = "11";
+                    break;
+                case 12:
+                    name = "12";
+                    break;
+                case 13:
+                    name = "13";
+                    break;
+                case 14:
+                    name = "14";
+                    break;
+                case 15:
+                    name = "15";
+                    break;
+                case 16:
+                    name = "16";
+                    break;
+                case 17:
+                    name = "17";
+                    break;
+                case 18:
+                    name = "18";
+                    break;
+                case 19:
+                    name = "19";
+                    break;
+                case 20:
+                    name = "20";
+                    break;
+                case 30:
+                    name = "30";
+                    break;
+                case 40:
+                    name = "40";
+                    break;
+                case 50:
+                    name = "50";
+                    break;
+                case 60:
+                    name = "60";
+                    break;
+                case 70:
+                    name = "70";
+                    break;
+                case 80:
+                    name = "80";
+                    break;
+                case 90:
+                    name = "90";
+                    break;
+                default:
+                    if (digt > 0)
+                    {
+                        name = tensCent(digit.Substring(0, 1) + "0") + " " + onescent(digit.Substring(1));
+                    }
+                    break;
+            }
+            return name;
+        }
+        private String onescent(String digit)
+        {
+            int digt = Convert.ToInt32(digit);
+            String name = "";
+            switch (digt)
+            {
+                case 1:
+                    name = "1";
+                    break;
+                case 2:
+                    name = "2";
+                    break;
+                case 3:
+                    name = "3";
+                    break;
+                case 4:
+                    name = "4";
+                    break;
+                case 5:
+                    name = "5";
+                    break;
+                case 6:
+                    name = "6";
+                    break;
+                case 7:
+                    name = "7";
+                    break;
+                case 8:
+                    name = "8";
+                    break;
+                case 9:
+                    name = "9";
+                    break;
+            }
+            return name;
+        }
         private String ones(String digit)
         {
             int digt = Convert.ToInt32(digit);
