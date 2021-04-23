@@ -66,7 +66,7 @@ namespace MSAccessMayo
         public List<ORCR> ListORCR(string Search = "")
         {
             var list = new List<ORCR>();
-            s.Query("select * from tbl_OR WHERE SalesNo Like @search OR ORNo Like @search", p => p.Add("@search", $"%{Search}%")).AsEnumerable().ToList().ForEach(r =>
+            s.Query("select * from tbl_OR WHERE str(ORNo) Like @search", p => p.Add("@search", $"%{Search}%")).AsEnumerable().ToList().ForEach(r =>
             {
                 list.Add(new ORCR(r));
             });

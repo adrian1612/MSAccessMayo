@@ -28,6 +28,10 @@ namespace MSAccessMayo
                         var ORCR = new ORCRForm();
                         ORCR.ShowDialog();
                         break;
+                    case "ORCRSearch":
+                        var orcrsearch = new ORCRSearch();
+                        orcrsearch.ShowDialog();
+                        break;
                     default:
                         MessageBox.Show("Command Not Found\n-Adrian Jaspio", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         break;
