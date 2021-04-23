@@ -31,7 +31,7 @@ namespace MSAccessMayo
             InitializeComponent();
             notifyIcon1.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
             notifyIcon1.Visible = true;
-            notifyIcon1.ShowBalloonTip(10000, "Message", "Please wait -Adrian Jaspio", ToolTipIcon.Info);
+            notifyIcon1.ShowBalloonTip(10000, "Loading...", "Please wait\n\n-Adrian Jaspio", ToolTipIcon.Info);
             LoadCustomer();
             LoadEmployee();
         }
