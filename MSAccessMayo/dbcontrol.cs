@@ -9,7 +9,7 @@ using System.Configuration;
 
 namespace MSAccessMayo
 {
-    class P : Dictionary<string,object>
+    public class P : Dictionary<string,object>
     {
         public int RecordCount { get; set; }
         public string Exception { get; set; }
@@ -17,7 +17,7 @@ namespace MSAccessMayo
         public OleDbDataAdapter da { get; set; }
         public DataTable dt { get; set; }
     }
-    class dbcontrol : P
+    public class dbcontrol : P
     {
         OleDbConnection cn = new OleDbConnection(ConfigurationManager.ConnectionStrings["access"].ConnectionString);
         OleDbCommand cm;
