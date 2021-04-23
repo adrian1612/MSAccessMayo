@@ -15,13 +15,23 @@ namespace MSAccessMayo
         Customers c = new Customers();
         Employee emp = new Employee();
         Sales sale = new Sales();
+        public List<SalesDetail> Details = new List<SalesDetail>();
+        decimal DetailsTotalAmount
+        {
+            get
+            {
+                decimal Total = 0;
+                Details.ForEach(d => Total += d.Amount);
+                return Total;
+            }
+        }
 
         public Insert()
         {
             InitializeComponent();
             notifyIcon1.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
             notifyIcon1.Visible = true;
-            notifyIcon1.ShowBalloonTip(5000, "Message", "Please wait -Adrian Jaspio", ToolTipIcon.Info);
+            notifyIcon1.ShowBalloonTip(10000, "Message", "Please wait -Adrian Jaspio", ToolTipIcon.Info);
 
             LoadCustomer();
 
@@ -76,12 +86,12 @@ namespace MSAccessMayo
 
         private void Particular_NewParticular(SalesDetail s)
         {
-            sale.Details.Add(s);
-            txtAmountInWord.Text = sale.changeCurrencyToWords((double)sale.ParticularTotalAmount);
-            txtTotal.Text = sale.ParticularTotalAmount.ToString();
+            Details.Add(s);
+            txtAmountInWord.Text = sale.changeCurrencyToWords((double)DetailsTotalAmount);
+            txtTotal.Text = DetailsTotalAmount.ToString();
 
             lvParticular.Items.Clear();
-            sale.Details.ForEach(d =>
+            Details.ForEach(d =>
             {
                 lvParticular.Items.Add(new ListViewItem(new string[] { d.Particular, d.Amount.ToString() }));
             });
@@ -92,12 +102,12 @@ namespace MSAccessMayo
             var Confirm = MessageBox.Show("Are you sure you want to save this Data?", "Confirmation", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
             if (Confirm == DialogResult.Yes)
             {
-                if (sale.Details.Count <= 0)
+                if (Details.Count <= 0)
                 {
                     MessageBox.Show("Particular can not be empty!", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return;
                 }
-                sale.Insert(new Sales(Convert.ToInt32(txtSalesNo.Text), cbCategory.Text, cbCustomer.Text, txtAddress.Text,txtTIN.Text, txtBusinessStyle.Text, dtpDate.Text, txtTerms.Text, txtPONo.Text, txtAmountInWord.Text, txtPayableTo.Text, cbPreparedBy.Text, cbCheckedBy.Text, cbApprovedBy.Text));
+                sale.Insert(new Sales(Convert.ToInt32(txtSalesNo.Text), cbCategory.Text, c.FindCustomer(cbCustomer.SelectedValue.ToString()), dtpDate.Text, txtPONo.Text, txtAmountInWord.Text, txtPayableTo.Text, cbPreparedBy.Text, cbCheckedBy.Text, cbApprovedBy.Text, Details));
                 MessageBox.Show("Done!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }

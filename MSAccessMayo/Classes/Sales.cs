@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MSAccessMayo
 {
-    class Sales
+    public class Sales
     {
 
         dbcontrol s = new dbcontrol();
@@ -15,19 +15,15 @@ namespace MSAccessMayo
         public int ID { get; set; }
         public int SalesNo { get; set; }
         public string Category { get; set; }
-        public string Customer { get; set; }
-        public string Address { get; set; }
-        public string TIN { get; set; }
-        public string BusinessStyle { get; set; }
+        public Customers Customer { get; set; }
         public string SDate { get; set; }
-        public string Terms { get; set; }
         public string PONo { get; set; }
         public string AmountInWord { get; set; }
         public string PayableTo { get; set; }
         public string PreparedBy { get; set; }
         public string CheckedBy { get; set; }
         public string ApprovedBy { get; set; }
-        public List<SalesDetail> Details = new List<SalesDetail>();
+        public List<SalesDetail> Details { get; set; }
         public decimal ParticularTotalAmount
         {
             get
@@ -44,41 +40,35 @@ namespace MSAccessMayo
 
         }
 
-        public Sales(int ID, int SalesNo, string Category, string Customer, string Address, string TIN, string BusinessStyle, string SDate, string Terms, string PONo, string AmountInWord, string PayableTo, string PreparedBy, string CheckedBy, string ApprovedBy)
+        public Sales(int ID, int SalesNo, string Category, Customers Customer, string SDate, string PONo, string AmountInWord, string PayableTo, string PreparedBy, string CheckedBy, string ApprovedBy, List<SalesDetail> Details)
         {
             this.ID = ID;
             this.SalesNo = SalesNo;
             this.Category = Category;
             this.Customer = Customer;
-            this.Address = Address;
-            this.TIN = TIN;
-            this.BusinessStyle = BusinessStyle;
             this.SDate = SDate;
-            this.Terms = Terms;
             this.PONo = PONo;
             this.AmountInWord = AmountInWord;
             this.PayableTo = PayableTo;
             this.PreparedBy = PreparedBy;
             this.CheckedBy = CheckedBy;
             this.ApprovedBy = ApprovedBy;
+            this.Details = Details;
         }
 
-        public Sales(int SalesNo, string Category, string Customer, string Address, string TIN, string BusinessStyle, string SDate, string Terms, string PONo, string AmountInWord, string PayableTo, string PreparedBy, string CheckedBy, string ApprovedBy)
+        public Sales(int SalesNo, string Category, Customers Customer,string SDate, string PONo, string AmountInWord, string PayableTo, string PreparedBy, string CheckedBy, string ApprovedBy, List<SalesDetail> Details)
         {
             this.SalesNo = SalesNo;
             this.Category = Category;
             this.Customer = Customer;
-            this.Address = Address;
-            this.TIN = TIN;
-            this.BusinessStyle = BusinessStyle;
             this.SDate = SDate;
-            this.Terms = Terms;
             this.PONo = PONo;
             this.AmountInWord = AmountInWord;
             this.PayableTo = PayableTo;
             this.PreparedBy = PreparedBy;
             this.CheckedBy = CheckedBy;
             this.ApprovedBy = ApprovedBy;
+            this.Details = Details;
         }
 
         public Sales(DataRow r)
@@ -86,12 +76,12 @@ namespace MSAccessMayo
             ID = (int)r["ID"];
             SalesNo = (int)r["SalesNo"];
             Category = r["Category"].ToString();
-            Customer = r["Customer"].ToString();
-            Address = r["Address"].ToString();
-            TIN = r["TIN"].ToString();
-            BusinessStyle = r["BusinessStyle"].ToString();
+            Customer.Customer = r["Customer"].ToString();
+            Customer.Address = r["Address"].ToString();
+            Customer.TIN = r["TIN"].ToString();
+            Customer.BusinessStyle = r["BusinessStyle"].ToString();
+            Customer.Terms = r["Terms"].ToString();
             SDate = r["SDate"].ToString();
-            Terms = r["Terms"].ToString();
             PONo = r["PONo"].ToString();
             AmountInWord = r["AmountInWord"].ToString();
             PayableTo = r["PayableTo"].ToString();
@@ -106,12 +96,12 @@ namespace MSAccessMayo
             {
                 p.Add("SalesNo", sale.SalesNo);
                 p.Add("Category", sale.Category);
-                p.Add("Customer", sale.Customer);
-                p.Add("Address", sale.Address);
-                p.Add("TIN", sale.TIN);
-                p.Add("BusinessStyle", sale.BusinessStyle);
+                p.Add("Customer", sale.Customer.Customer);
+                p.Add("Address", sale.Customer.Address);
+                p.Add("TIN", sale.Customer.TIN);
+                p.Add("BusinessStyle", sale.Customer.BusinessStyle);
                 p.Add("SDate", sale.SDate);
-                p.Add("Terms", sale.Terms);
+                p.Add("Terms", sale.Customer.Terms);
                 p.Add("PONo", sale.PONo);
                 p.Add("AmountInWord", sale.AmountInWord);
                 p.Add("PayableTo", sale.PayableTo);
@@ -120,7 +110,7 @@ namespace MSAccessMayo
                 p.Add("ApprovedBy", sale.ApprovedBy);
             }, true);
 
-            Details.ForEach(d =>
+            sale.Details.ForEach(d =>
             {
                 s.Insert("tbl_salesDetail", p =>
                 {
@@ -131,6 +121,7 @@ namespace MSAccessMayo
             });
         }
 
+        #region CONVERTION
         public String changeNumericToWords(double numb)
         {
             String num = numb.ToString();
@@ -303,111 +294,7 @@ namespace MSAccessMayo
             }
             return name;
         }
-        private String tensCent(String digit)
-        {
-            int digt = Convert.ToInt32(digit);
-            String name = null;
-            switch (digt)
-            {
-                case 10:
-                    name = "10";
-                    break;
-                case 11:
-                    name = "11";
-                    break;
-                case 12:
-                    name = "12";
-                    break;
-                case 13:
-                    name = "13";
-                    break;
-                case 14:
-                    name = "14";
-                    break;
-                case 15:
-                    name = "15";
-                    break;
-                case 16:
-                    name = "16";
-                    break;
-                case 17:
-                    name = "17";
-                    break;
-                case 18:
-                    name = "18";
-                    break;
-                case 19:
-                    name = "19";
-                    break;
-                case 20:
-                    name = "20";
-                    break;
-                case 30:
-                    name = "30";
-                    break;
-                case 40:
-                    name = "40";
-                    break;
-                case 50:
-                    name = "50";
-                    break;
-                case 60:
-                    name = "60";
-                    break;
-                case 70:
-                    name = "70";
-                    break;
-                case 80:
-                    name = "80";
-                    break;
-                case 90:
-                    name = "90";
-                    break;
-                default:
-                    if (digt > 0)
-                    {
-                        name = tensCent(digit.Substring(0, 1) + "0") + " " + onescent(digit.Substring(1));
-                    }
-                    break;
-            }
-            return name;
-        }
-        private String onescent(String digit)
-        {
-            int digt = Convert.ToInt32(digit);
-            String name = "";
-            switch (digt)
-            {
-                case 1:
-                    name = "1";
-                    break;
-                case 2:
-                    name = "2";
-                    break;
-                case 3:
-                    name = "3";
-                    break;
-                case 4:
-                    name = "4";
-                    break;
-                case 5:
-                    name = "5";
-                    break;
-                case 6:
-                    name = "6";
-                    break;
-                case 7:
-                    name = "7";
-                    break;
-                case 8:
-                    name = "8";
-                    break;
-                case 9:
-                    name = "9";
-                    break;
-            }
-            return name;
-        }
+
         private String ones(String digit)
         {
             int digt = Convert.ToInt32(digit);
@@ -475,6 +362,7 @@ namespace MSAccessMayo
             }
             return cts;
         }
+        #endregion
 
 
     }

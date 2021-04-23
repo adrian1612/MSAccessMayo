@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace MSAccessMayo
 {
-    class Customers
+    public class Customers
     {
         dbcontrol s = new dbcontrol();
         public int ID { get; set; }
