@@ -18,11 +18,21 @@ namespace MSAccessMayo
             Hide();
             foreach (string s in arg)
             {
-                if (s == "Insert")
+                switch (s)
                 {
-                    var insert = new Insert();
-                    insert.ShowDialog();
+                    case "Insert":
+                        var insert = new Insert();
+                        insert.ShowDialog();
+                        break;
+                    case "CreateORCR":
+                        var ORCR = new ORCRForm();
+                        ORCR.ShowDialog();
+                        break;
+                    default:
+                        MessageBox.Show("Command Not Found\n-Adrian Jaspio", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        break;
                 }
+
             }
         }
     }
