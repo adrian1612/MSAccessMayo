@@ -35,5 +35,13 @@ namespace MSAccessMayo
         {
             Environment.Exit(0);
         }
+
+        private void textBox1_KeyUp(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                LoadData(textBox1.Text);
+            }
+        }
     }
 }
