@@ -50,7 +50,18 @@ namespace MSAccessMayo
             {
                 list.Add(new Employee(r));
             });
+            list.Add(new Employee("", "-New Employee-", ""));
             return list;
+        }
+
+        public void Insert(Employee employee)
+        {
+            s.Insert("tbl_employee", p =>
+            {
+                p.Add("EmpID", employee.EmpID);
+                p.Add("FullName", employee.FullName);
+                p.Add("Position", employee.Position);
+            });
         }
     }
 }

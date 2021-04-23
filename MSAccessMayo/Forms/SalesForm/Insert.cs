@@ -119,5 +119,21 @@ namespace MSAccessMayo
                 MessageBox.Show("Done!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        private void EmployeeCB(object sender, EventArgs e)
+        {
+            var cb = (ComboBox)sender;
+            if (cb.Text == "-New Employee-")
+            {
+                var newEmp = new AddEmployee();
+                newEmp.NewEmployee += NewEmp_NewEmployee;
+                newEmp.ShowDialog();
+            }
+        }
+
+        private void NewEmp_NewEmployee(Employee e)
+        {
+            LoadEmployee();
+        }
     }
 }
