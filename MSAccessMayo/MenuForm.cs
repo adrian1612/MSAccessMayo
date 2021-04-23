@@ -32,8 +32,9 @@ namespace MSAccessMayo
                         MessageBox.Show("Command Not Found\n-Adrian Jaspio", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         break;
                 }
-
             }
+            MessageBox.Show("Invalid Action\n\nContact Adrian Jaspio to resolved this issue", "Developer", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            Environment.Exit(0);
         }
     }
 }
