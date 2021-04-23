@@ -46,10 +46,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddParticular.cs">
+    <Compile Include="Forms\SalesForm\AddParticular.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AddParticular.Designer.cs">
+    <Compile Include="Forms\SalesForm\AddParticular.Designer.cs">
       <DependentUpon>AddParticular.cs</DependentUpon>
     </Compile>
     <Compile Include="Classes\Customers.cs" />
@@ -57,10 +57,10 @@
     <Compile Include="Classes\Sales.cs" />
     <Compile Include="Classes\SalesDetail.cs" />
     <Compile Include="dbcontrol.cs" />
-    <Compile Include="Insert.cs">
+    <Compile Include="Forms\SalesForm\Insert.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Insert.Designer.cs">
+    <Compile Include="Forms\SalesForm\Insert.Designer.cs">
       <DependentUpon>Insert.cs</DependentUpon>
     </Compile>
     <Compile Include="MenuForm.cs">
@@ -71,10 +71,10 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="AddParticular.resx">
+    <EmbeddedResource Include="Forms\SalesForm\AddParticular.resx">
       <DependentUpon>AddParticular.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Insert.resx">
+    <EmbeddedResource Include="Forms\SalesForm\Insert.resx">
       <DependentUpon>Insert.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MenuForm.resx">

@@ -32,15 +32,21 @@ namespace MSAccessMayo
             notifyIcon1.Icon = Icon.ExtractAssociatedIcon(Application.ExecutablePath);
             notifyIcon1.Visible = true;
             notifyIcon1.ShowBalloonTip(10000, "Message", "Please wait -Adrian Jaspio", ToolTipIcon.Info);
-
             LoadCustomer();
+            LoadEmployee();
+        }
 
-            var listAppr = new List<ComboBox>() { cbPreparedBy, cbApprovedBy, cbCheckedBy };
-            listAppr.ForEach(appr =>
+        async void LoadEmployee()
+        {
+            await Task.Run(() =>
             {
-                appr.DataSource = emp.ListEmployee();
-                appr.DisplayMember = "Fullname";
-                appr.ValueMember = "Fullname";
+                var listAppr = new List<ComboBox>() { cbPreparedBy, cbApprovedBy, cbCheckedBy };
+                listAppr.ForEach(appr =>
+                {
+                    appr.DataSource = emp.ListEmployee();
+                    appr.DisplayMember = "Fullname";
+                    appr.ValueMember = "Fullname";
+                });
             });
         }
 
@@ -53,7 +59,6 @@ namespace MSAccessMayo
 
         private void Insert_Load(object sender, EventArgs e)
         {
-           
             UpdateCustomerFields();
             notifyIcon1.Visible = false;
         }
@@ -63,13 +68,16 @@ namespace MSAccessMayo
             UpdateCustomerFields();
         }
 
-        void UpdateCustomerFields()
+        async void UpdateCustomerFields()
         {
-            var cust = c.FindCustomer(cbCustomer.SelectedValue.ToString());
-            txtAddress.Text = cust.Address;
-            txtTIN.Text = cust.TIN;
-            txtBusinessStyle.Text = cust.BusinessStyle;
-            txtTerms.Text = cust.Terms;
+            await Task.Run(() =>
+            {
+                var cust = c.FindCustomer(cbCustomer.SelectedValue.ToString());
+                txtAddress.Text = cust.Address;
+                txtTIN.Text = cust.TIN;
+                txtBusinessStyle.Text = cust.BusinessStyle;
+                txtTerms.Text = cust.Terms;
+            });
         }
 
         private void Insert_FormClosing(object sender, FormClosingEventArgs e)
