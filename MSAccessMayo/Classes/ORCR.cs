@@ -52,15 +52,15 @@ namespace MSAccessMayo
 
         public ORCR(DataRow r)
         {
-            ID          = (int)r["ID"];
-            Category    = r["Category"].ToString();
-            ORNo        = (int)r["ORNo"];
-            ODate       = r["ODate"].ToString();
+            ID = (int)r["ID"];
+            Category = r["Category"].ToString();
+            ORNo = (int)r["ORNo"];
+            ODate = r["ODate"].ToString();
             ReceiveFrom = r["ReceiveFrom"].ToString();
-            TIN         = r["TIN"].ToString();
-            Address     = r["Address"].ToString();
-            Amount      = (decimal)r["Amount"];
-            SalesNo     = r["SalesNo"].ToString();
+            TIN = r["TIN"].ToString();
+            Address = r["Address"].ToString();
+            Amount = (decimal)r["Amount"];
+            SalesNo = r["SalesNo"].ToString();
         }
 
         public List<ORCR> ListORCR(string Search = "")

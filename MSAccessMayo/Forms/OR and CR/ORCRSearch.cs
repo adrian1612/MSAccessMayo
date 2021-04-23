@@ -25,9 +25,10 @@ namespace MSAccessMayo
             LoadData(textBox1.Text);
         }
 
+
         void LoadData(string search = "")
         {
-            dataGridView1.DataSource = s.Query("select * from tbl_OR WHERE ORNo Like @search or Category like @search or salesno like @search or address like @search or TIN like @search", p => p.Add("@search", $"%{search}%"));
+            dataGridView1.DataSource = s.Query("select * from tbl_OR WHERE ORNo Like @search or Category like @search or salesno like @search or address like @search or TIN like @search or receiveFrom like @search", p => p.Add("@search", $"%{search}%"));
         }
 
         private void ORCRSearch_FormClosing(object sender, FormClosingEventArgs e)
