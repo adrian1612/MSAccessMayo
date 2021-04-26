@@ -36,17 +36,15 @@ namespace MSAccessMayo
             LoadEmployee();
         }
 
-        async void LoadEmployee()
+        void LoadEmployee()
         {
-            await Task.Run(() =>
+            var listAppr = new List<ComboBox>() { cbPreparedBy, cbApprovedBy, cbCheckedBy };
+            listAppr.ForEach(appr =>
             {
-                var listAppr = new List<ComboBox>() { cbPreparedBy, cbApprovedBy, cbCheckedBy };
-                listAppr.ForEach(appr =>
-                {
-                    appr.DataSource = emp.ListEmployee();
-                    appr.DisplayMember = "Fullname";
-                    appr.ValueMember = "Fullname";
-                });
+                appr.DataSource = emp.ListEmployee();
+                appr.DisplayMember = "Fullname";
+                appr.ValueMember = "Fullname";
+                appr.SelectedIndex = 1;
             });
         }
 

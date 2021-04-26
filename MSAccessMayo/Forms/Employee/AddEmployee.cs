@@ -35,7 +35,12 @@ namespace MSAccessMayo
 
         private void AddEmployee_FormClosing(object sender, FormClosingEventArgs e)
         {
-            NewEmployee?.Invoke(emp);
+
+        }
+
+        private void AddEmployee_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            
         }
     }
 }
