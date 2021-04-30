@@ -22,9 +22,15 @@ namespace Tester
 
             foreach (DataColumn c in dt.Columns)
             {
-                foreach (DataRow r in dt.Rows)
+                if (c.ToString() != "Account Title")
                 {
-                    Console.WriteLine(r["SM MOA"]);
+                    Console.WriteLine(c);
+                    foreach (DataRow r in dt.Rows)
+                    {
+                        Console.WriteLine(r["Account Title"]);
+                        Console.WriteLine(r[c]);
+                    }
+                    Console.WriteLine();
                 }
             }
             Console.ReadLine();
