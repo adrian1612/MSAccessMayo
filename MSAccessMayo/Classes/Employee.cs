@@ -22,10 +22,10 @@ namespace MSAccessMayo
 
         public Employee(int ID, string EmpID, string FullName, string Position)
         {
-            this.ID         = ID;              
-            this.EmpID      = EmpID;           
-            this.FullName   = FullName;        
-            this.Position   = Position;        
+            this.ID         = ID                ;              
+            this.EmpID      = EmpID             ;           
+            this.FullName   = FullName          ;        
+            this.Position   = Position          ;        
         }
 
         public Employee(string EmpID, string FullName, string Position)
