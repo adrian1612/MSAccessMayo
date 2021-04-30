@@ -15,6 +15,7 @@ namespace MSAccessMayo
         Customers c = new Customers();
         Employee emp = new Employee();
         Sales sale = new Sales();
+        Convertion cv = new Convertion();
         public List<SalesDetail> Details = new List<SalesDetail>();
         decimal DetailsTotalAmount
         {
@@ -93,7 +94,7 @@ namespace MSAccessMayo
         private void Particular_NewParticular(SalesDetail s)
         {
             Details.Add(s);
-            txtAmountInWord.Text = sale.changeCurrencyToWords((double)DetailsTotalAmount);
+            txtAmountInWord.Text = cv.changeCurrencyToWords((double)DetailsTotalAmount);
             txtTotal.Text = DetailsTotalAmount.ToString();
 
             lvParticular.Items.Clear();

@@ -4,26 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tester
+namespace MSAccessMayo
 {
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            Convertion c = new Convertion();
-            Random rnd = new Random();
-
-            for (int i = 0; i < 5; i++)
-            {
-                var value = rnd.Next() + (rnd.Next(0, 100) / 100d);
-                Console.WriteLine("{0:c}", value);
-                Console.WriteLine(c.changeCurrencyToWords(value));
-                Console.WriteLine("-----------------------------------------------------------------");
-            }
-            Console.ReadLine();
-        }
-    }
-
     class Convertion
     {
         public String changeNumericToWords(double numb)
