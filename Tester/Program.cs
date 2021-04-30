@@ -27,10 +27,14 @@ namespace Tester
                     Console.WriteLine(c);
                     foreach (DataRow r in dt.Rows)
                     {
-                        Console.WriteLine(r["Account Title"]);
-                        Console.WriteLine(r[c]);
+                        if (Convert.ToDecimal(r[c]) >= 1)
+                        {
+                            Console.WriteLine(r["Account Title"]);
+                            Console.WriteLine(r[c]);
+                        }
+
                     }
-                    Console.WriteLine();
+                    Console.WriteLine("--Next Column--");
                 }
             }
             Console.ReadLine();
