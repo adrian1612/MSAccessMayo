@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,15 +11,21 @@ namespace Tester
     {
         static void Main(string[] args)
         {
-            Convertion c = new Convertion();
-            Random rnd = new Random();
+            DataTable dt = new DataTable();
+            dt.Columns.Add("Account Title");
+            dt.Columns.Add("SM MOA");
+            dt.Columns.Add("SM Lucena");
+            dt.Columns.Add("Credit");
+            dt.Rows.Add("Salaries and Wages", 3242, 5435, 0);
+            dt.Rows.Add("Night Shift Premium", 452, 765, 0);
+            dt.Rows.Add("SSS Salary Loan Payable", 0, 0, 24984.53);
 
-            for (int i = 0; i < 5; i++)
+            foreach (DataColumn c in dt.Columns)
             {
-                var value = rnd.Next() + (rnd.Next(0, 100) / 100d);
-                Console.WriteLine("{0:c}", value);
-                Console.WriteLine(c.changeCurrencyToWords(value));
-                Console.WriteLine("-----------------------------------------------------------------");
+                foreach (DataRow r in dt.Rows)
+                {
+                    Console.WriteLine(r["SM MOA"]);
+                }
             }
             Console.ReadLine();
         }

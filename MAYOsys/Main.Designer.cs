@@ -30,6 +30,7 @@
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.checkVoucherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.accountingSystemToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -45,9 +46,17 @@
             // 
             // checkVoucherToolStripMenuItem
             // 
+            this.checkVoucherToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.accountingSystemToolStripMenuItem});
             this.checkVoucherToolStripMenuItem.Name = "checkVoucherToolStripMenuItem";
             this.checkVoucherToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.checkVoucherToolStripMenuItem.Text = "Menu";
+            // 
+            // accountingSystemToolStripMenuItem
+            // 
+            this.accountingSystemToolStripMenuItem.Name = "accountingSystemToolStripMenuItem";
+            this.accountingSystemToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.accountingSystemToolStripMenuItem.Text = "Accounting System";
             // 
             // Main
             // 
@@ -71,6 +80,7 @@
 
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem checkVoucherToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem accountingSystemToolStripMenuItem;
     }
 }
 
