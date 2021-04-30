@@ -29,8 +29,16 @@ namespace Tester
                     {
                         if (Convert.ToDecimal(r[c]) >= 1)
                         {
-                            Console.WriteLine(r["Account Title"]);
-                            Console.WriteLine(r[c]);
+                            if (c.ToString() == "Credit")
+                            {
+                                Console.WriteLine("*{0}*", r["Account Title"]);
+                                Console.WriteLine("Credit: {0}", r[c]);
+                            }
+                            else
+                            {
+                                Console.WriteLine("*{0}*", r["Account Title"]);
+                                Console.WriteLine("Debit: {0}", r[c]);
+                            }
                         }
 
                     }
