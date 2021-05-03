@@ -36,5 +36,23 @@ namespace MAYOsys.Forms.AccountingSystem
             cv.AddLocation(cbLocation.Text);
             BindDetail();
         }
+
+        private void btnAssignLocationJO_Click(object sender, EventArgs e)
+        {
+            var assign = new JobOrderAssignment(cv.Detail());
+            assign.Entry += Assign_Entry;
+            assign.ShowDialog();
+        }
+
+        List<LocationJO> listLocationJO = new List<LocationJO>();
+        private void Assign_Entry(LocationJO jo)
+        {
+            listLocationJO.Add(jo);
+            lvJOAssign.Items.Clear();
+            listLocationJO.ForEach(llj =>
+            {
+                lvJOAssign.Items.Add(new ListViewItem(new string[] { llj.JOID.ToString(), llj.Location }));
+            });
+        }
     }
 }
