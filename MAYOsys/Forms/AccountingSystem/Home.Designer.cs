@@ -65,10 +65,13 @@
             this.label12 = new System.Windows.Forms.Label();
             this.txtCheckNo = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.tsProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAcctLoc)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtYear)).BeginInit();
+            this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -132,6 +135,7 @@
             // 
             // cbAccountTitle
             // 
+            this.cbAccountTitle.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbAccountTitle.FormattingEnabled = true;
             this.cbAccountTitle.Location = new System.Drawing.Point(244, 44);
             this.cbAccountTitle.Name = "cbAccountTitle";
@@ -250,6 +254,7 @@
             // 
             // cbLocation
             // 
+            this.cbLocation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbLocation.FormattingEnabled = true;
             this.cbLocation.Location = new System.Drawing.Point(572, 44);
             this.cbLocation.Name = "cbLocation";
@@ -443,23 +448,43 @@
             this.label13.TabIndex = 19;
             this.label13.Text = "Check No.";
             // 
+            // statusStrip1
+            // 
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.tsProgressBar});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 714);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(1055, 22);
+            this.statusStrip1.SizingGrip = false;
+            this.statusStrip1.TabIndex = 1;
+            this.statusStrip1.Text = "statusStrip1";
+            // 
+            // tsProgressBar
+            // 
+            this.tsProgressBar.Name = "tsProgressBar";
+            this.tsProgressBar.Size = new System.Drawing.Size(100, 16);
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1055, 715);
+            this.ClientSize = new System.Drawing.Size(1055, 736);
+            this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.groupBox1);
             this.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "Home";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Home";
+            this.Text = "Check Voucher";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAcctLoc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtYear)).EndInit();
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -502,5 +527,7 @@
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.TextBox txtBank;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.StatusStrip statusStrip1;
+        private System.Windows.Forms.ToolStripProgressBar tsProgressBar;
     }
 }
