@@ -29,11 +29,35 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnSubmit = new System.Windows.Forms.Button();
+            this.txtCheckNo = new System.Windows.Forms.TextBox();
+            this.label13 = new System.Windows.Forms.Label();
+            this.txtBranchNo = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtAccountNo = new System.Windows.Forms.TextBox();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtBank = new System.Windows.Forms.TextBox();
+            this.label10 = new System.Windows.Forms.Label();
+            this.txtYear = new System.Windows.Forms.NumericUpDown();
+            this.label9 = new System.Windows.Forms.Label();
+            this.cbMonth = new System.Windows.Forms.ComboBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lvJOAssign = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnAssignLocationJO = new System.Windows.Forms.Button();
+            this.btnAllLocation = new System.Windows.Forms.Button();
+            this.btnAddLocation = new System.Windows.Forms.Button();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cbLocation = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.cbAccountTitle = new System.Windows.Forms.ComboBox();
             this.btnAddTitle = new System.Windows.Forms.Button();
             this.dgvAcctLoc = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtParticular = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.cbPayee = new System.Windows.Forms.ComboBox();
@@ -42,40 +66,18 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtCVNo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
-            this.cbLocation = new System.Windows.Forms.ComboBox();
-            this.btnAddLocation = new System.Windows.Forms.Button();
-            this.btnAllLocation = new System.Windows.Forms.Button();
-            this.btnAssignLocationJO = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
-            this.cbMonth = new System.Windows.Forms.ComboBox();
-            this.label9 = new System.Windows.Forms.Label();
-            this.txtYear = new System.Windows.Forms.NumericUpDown();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lvJOAssign = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.label10 = new System.Windows.Forms.Label();
-            this.txtBank = new System.Windows.Forms.TextBox();
-            this.txtAccountNo = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.txtBranchNo = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.txtCheckNo = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tsProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtYear)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAcctLoc)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtYear)).BeginInit();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnSubmit);
             this.groupBox1.Controls.Add(this.txtCheckNo);
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.txtBranchNo);
@@ -104,6 +106,137 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Accounting System";
             // 
+            // btnSubmit
+            // 
+            this.btnSubmit.Location = new System.Drawing.Point(501, 182);
+            this.btnSubmit.Name = "btnSubmit";
+            this.btnSubmit.Size = new System.Drawing.Size(211, 36);
+            this.btnSubmit.TabIndex = 21;
+            this.btnSubmit.Text = "Submit";
+            this.btnSubmit.UseVisualStyleBackColor = true;
+            this.btnSubmit.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // txtCheckNo
+            // 
+            this.txtCheckNo.Location = new System.Drawing.Point(501, 145);
+            this.txtCheckNo.Name = "txtCheckNo";
+            this.txtCheckNo.Size = new System.Drawing.Size(211, 22);
+            this.txtCheckNo.TabIndex = 20;
+            // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(427, 148);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(59, 14);
+            this.label13.TabIndex = 19;
+            this.label13.Text = "Check No.";
+            // 
+            // txtBranchNo
+            // 
+            this.txtBranchNo.Location = new System.Drawing.Point(501, 118);
+            this.txtBranchNo.Name = "txtBranchNo";
+            this.txtBranchNo.Size = new System.Drawing.Size(211, 22);
+            this.txtBranchNo.TabIndex = 18;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(427, 121);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(44, 14);
+            this.label12.TabIndex = 17;
+            this.label12.Text = "Branch";
+            // 
+            // txtAccountNo
+            // 
+            this.txtAccountNo.Location = new System.Drawing.Point(501, 90);
+            this.txtAccountNo.Name = "txtAccountNo";
+            this.txtAccountNo.Size = new System.Drawing.Size(211, 22);
+            this.txtAccountNo.TabIndex = 16;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(427, 93);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(70, 14);
+            this.label11.TabIndex = 15;
+            this.label11.Text = "Account No.";
+            // 
+            // txtBank
+            // 
+            this.txtBank.Location = new System.Drawing.Point(501, 62);
+            this.txtBank.Name = "txtBank";
+            this.txtBank.Size = new System.Drawing.Size(211, 22);
+            this.txtBank.TabIndex = 14;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(427, 65);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(34, 14);
+            this.label10.TabIndex = 13;
+            this.label10.Text = "Bank";
+            // 
+            // txtYear
+            // 
+            this.txtYear.Location = new System.Drawing.Point(635, 27);
+            this.txtYear.Maximum = new decimal(new int[] {
+            9999999,
+            0,
+            0,
+            0});
+            this.txtYear.Name = "txtYear";
+            this.txtYear.Size = new System.Drawing.Size(77, 22);
+            this.txtYear.TabIndex = 12;
+            this.txtYear.Value = new decimal(new int[] {
+            2021,
+            0,
+            0,
+            0});
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(600, 31);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(30, 14);
+            this.label9.TabIndex = 11;
+            this.label9.Text = "Year";
+            // 
+            // cbMonth
+            // 
+            this.cbMonth.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbMonth.FormattingEnabled = true;
+            this.cbMonth.Items.AddRange(new object[] {
+            "January",
+            "February",
+            "March",
+            "April",
+            "May",
+            "June",
+            "July",
+            "August",
+            "September",
+            "October",
+            "November",
+            "December"});
+            this.cbMonth.Location = new System.Drawing.Point(470, 27);
+            this.cbMonth.Name = "cbMonth";
+            this.cbMonth.Size = new System.Drawing.Size(121, 22);
+            this.cbMonth.TabIndex = 10;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(427, 31);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(42, 14);
+            this.label8.TabIndex = 9;
+            this.label8.Text = "Month";
+            // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.lvJOAssign);
@@ -124,6 +257,85 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Location Data Entry";
             // 
+            // lvJOAssign
+            // 
+            this.lvJOAssign.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2});
+            this.lvJOAssign.Location = new System.Drawing.Point(6, 73);
+            this.lvJOAssign.Name = "lvJOAssign";
+            this.lvJOAssign.Size = new System.Drawing.Size(232, 378);
+            this.lvJOAssign.TabIndex = 20;
+            this.lvJOAssign.UseCompatibleStateImageBehavior = false;
+            this.lvJOAssign.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "JO ID";
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Location";
+            this.columnHeader2.Width = 128;
+            // 
+            // btnAssignLocationJO
+            // 
+            this.btnAssignLocationJO.Location = new System.Drawing.Point(157, 43);
+            this.btnAssignLocationJO.Name = "btnAssignLocationJO";
+            this.btnAssignLocationJO.Size = new System.Drawing.Size(81, 25);
+            this.btnAssignLocationJO.TabIndex = 19;
+            this.btnAssignLocationJO.Text = "Assign";
+            this.btnAssignLocationJO.UseVisualStyleBackColor = true;
+            this.btnAssignLocationJO.Click += new System.EventHandler(this.btnAssignLocationJO_Click);
+            // 
+            // btnAllLocation
+            // 
+            this.btnAllLocation.Location = new System.Drawing.Point(847, 42);
+            this.btnAllLocation.Name = "btnAllLocation";
+            this.btnAllLocation.Size = new System.Drawing.Size(81, 25);
+            this.btnAllLocation.TabIndex = 18;
+            this.btnAllLocation.Text = "All Location";
+            this.btnAllLocation.UseVisualStyleBackColor = true;
+            this.btnAllLocation.Click += new System.EventHandler(this.btnAllLocation_Click);
+            // 
+            // btnAddLocation
+            // 
+            this.btnAddLocation.Location = new System.Drawing.Point(765, 42);
+            this.btnAddLocation.Name = "btnAddLocation";
+            this.btnAddLocation.Size = new System.Drawing.Size(81, 25);
+            this.btnAddLocation.TabIndex = 16;
+            this.btnAddLocation.Text = "Add Location";
+            this.btnAddLocation.UseVisualStyleBackColor = true;
+            this.btnAddLocation.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(569, 25);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(52, 14);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "Location";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(3, 48);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(125, 14);
+            this.label5.TabIndex = 13;
+            this.label5.Text = "Job Order Assignment";
+            // 
+            // cbLocation
+            // 
+            this.cbLocation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbLocation.FormattingEnabled = true;
+            this.cbLocation.Location = new System.Drawing.Point(572, 44);
+            this.cbLocation.Name = "cbLocation";
+            this.cbLocation.Size = new System.Drawing.Size(187, 22);
+            this.cbLocation.TabIndex = 14;
+            this.cbLocation.Click += new System.EventHandler(this.LoadCB);
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -141,6 +353,7 @@
             this.cbAccountTitle.Name = "cbAccountTitle";
             this.cbAccountTitle.Size = new System.Drawing.Size(220, 22);
             this.cbAccountTitle.TabIndex = 9;
+            this.cbAccountTitle.Click += new System.EventHandler(this.LoadCB);
             // 
             // btnAddTitle
             // 
@@ -155,8 +368,8 @@
             // dgvAcctLoc
             // 
             this.dgvAcctLoc.AllowUserToAddRows = false;
+            this.dgvAcctLoc.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             this.dgvAcctLoc.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgvAcctLoc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAcctLoc.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2});
@@ -165,6 +378,23 @@
             this.dgvAcctLoc.RowHeadersVisible = false;
             this.dgvAcctLoc.Size = new System.Drawing.Size(769, 378);
             this.dgvAcctLoc.TabIndex = 0;
+            // 
+            // Column1
+            // 
+            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
+            this.Column1.DataPropertyName = "AccountTitle";
+            this.Column1.Frozen = true;
+            this.Column1.HeaderText = "Account Title";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 102;
+            // 
+            // Column2
+            // 
+            this.Column2.DataPropertyName = "Credit";
+            this.Column2.HeaderText = "Credit";
+            this.Column2.Name = "Column2";
+            this.Column2.Width = 64;
             // 
             // txtParticular
             // 
@@ -191,6 +421,7 @@
             this.cbPayee.Name = "cbPayee";
             this.cbPayee.Size = new System.Drawing.Size(294, 22);
             this.cbPayee.TabIndex = 5;
+            this.cbPayee.Click += new System.EventHandler(this.LoadCB);
             // 
             // label3
             // 
@@ -235,221 +466,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "CV No.";
             // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(3, 48);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(125, 14);
-            this.label5.TabIndex = 13;
-            this.label5.Text = "Job Order Assignment";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(569, 25);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(52, 14);
-            this.label7.TabIndex = 15;
-            this.label7.Text = "Location";
-            // 
-            // cbLocation
-            // 
-            this.cbLocation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbLocation.FormattingEnabled = true;
-            this.cbLocation.Location = new System.Drawing.Point(572, 44);
-            this.cbLocation.Name = "cbLocation";
-            this.cbLocation.Size = new System.Drawing.Size(187, 22);
-            this.cbLocation.TabIndex = 14;
-            // 
-            // btnAddLocation
-            // 
-            this.btnAddLocation.Location = new System.Drawing.Point(765, 42);
-            this.btnAddLocation.Name = "btnAddLocation";
-            this.btnAddLocation.Size = new System.Drawing.Size(81, 25);
-            this.btnAddLocation.TabIndex = 16;
-            this.btnAddLocation.Text = "Add Location";
-            this.btnAddLocation.UseVisualStyleBackColor = true;
-            this.btnAddLocation.Click += new System.EventHandler(this.button2_Click);
-            // 
-            // btnAllLocation
-            // 
-            this.btnAllLocation.Location = new System.Drawing.Point(847, 42);
-            this.btnAllLocation.Name = "btnAllLocation";
-            this.btnAllLocation.Size = new System.Drawing.Size(81, 25);
-            this.btnAllLocation.TabIndex = 18;
-            this.btnAllLocation.Text = "All Location";
-            this.btnAllLocation.UseVisualStyleBackColor = true;
-            this.btnAllLocation.Click += new System.EventHandler(this.btnAllLocation_Click);
-            // 
-            // btnAssignLocationJO
-            // 
-            this.btnAssignLocationJO.Location = new System.Drawing.Point(157, 43);
-            this.btnAssignLocationJO.Name = "btnAssignLocationJO";
-            this.btnAssignLocationJO.Size = new System.Drawing.Size(81, 25);
-            this.btnAssignLocationJO.TabIndex = 19;
-            this.btnAssignLocationJO.Text = "Assign";
-            this.btnAssignLocationJO.UseVisualStyleBackColor = true;
-            this.btnAssignLocationJO.Click += new System.EventHandler(this.btnAssignLocationJO_Click);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(427, 31);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(42, 14);
-            this.label8.TabIndex = 9;
-            this.label8.Text = "Month";
-            // 
-            // cbMonth
-            // 
-            this.cbMonth.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbMonth.FormattingEnabled = true;
-            this.cbMonth.Items.AddRange(new object[] {
-            "January",
-            "February",
-            "March",
-            "April",
-            "May",
-            "June",
-            "July",
-            "August",
-            "September",
-            "October",
-            "November",
-            "December"});
-            this.cbMonth.Location = new System.Drawing.Point(470, 27);
-            this.cbMonth.Name = "cbMonth";
-            this.cbMonth.Size = new System.Drawing.Size(121, 22);
-            this.cbMonth.TabIndex = 10;
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(600, 31);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(30, 14);
-            this.label9.TabIndex = 11;
-            this.label9.Text = "Year";
-            // 
-            // txtYear
-            // 
-            this.txtYear.Location = new System.Drawing.Point(635, 27);
-            this.txtYear.Maximum = new decimal(new int[] {
-            9999999,
-            0,
-            0,
-            0});
-            this.txtYear.Name = "txtYear";
-            this.txtYear.Size = new System.Drawing.Size(77, 22);
-            this.txtYear.TabIndex = 12;
-            this.txtYear.Value = new decimal(new int[] {
-            2021,
-            0,
-            0,
-            0});
-            // 
-            // Column1
-            // 
-            this.Column1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.DisplayedCells;
-            this.Column1.DataPropertyName = "AccountTitle";
-            this.Column1.Frozen = true;
-            this.Column1.HeaderText = "Account Title";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 102;
-            // 
-            // Column2
-            // 
-            this.Column2.DataPropertyName = "Credit";
-            this.Column2.HeaderText = "Credit";
-            this.Column2.Name = "Column2";
-            // 
-            // lvJOAssign
-            // 
-            this.lvJOAssign.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2});
-            this.lvJOAssign.Location = new System.Drawing.Point(6, 73);
-            this.lvJOAssign.Name = "lvJOAssign";
-            this.lvJOAssign.Size = new System.Drawing.Size(232, 378);
-            this.lvJOAssign.TabIndex = 20;
-            this.lvJOAssign.UseCompatibleStateImageBehavior = false;
-            this.lvJOAssign.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "JO ID";
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Location";
-            this.columnHeader2.Width = 128;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(427, 65);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(34, 14);
-            this.label10.TabIndex = 13;
-            this.label10.Text = "Bank";
-            // 
-            // txtBank
-            // 
-            this.txtBank.Location = new System.Drawing.Point(501, 62);
-            this.txtBank.Name = "txtBank";
-            this.txtBank.Size = new System.Drawing.Size(211, 22);
-            this.txtBank.TabIndex = 14;
-            // 
-            // txtAccountNo
-            // 
-            this.txtAccountNo.Location = new System.Drawing.Point(501, 90);
-            this.txtAccountNo.Name = "txtAccountNo";
-            this.txtAccountNo.Size = new System.Drawing.Size(211, 22);
-            this.txtAccountNo.TabIndex = 16;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(427, 93);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(70, 14);
-            this.label11.TabIndex = 15;
-            this.label11.Text = "Account No.";
-            // 
-            // txtBranchNo
-            // 
-            this.txtBranchNo.Location = new System.Drawing.Point(501, 118);
-            this.txtBranchNo.Name = "txtBranchNo";
-            this.txtBranchNo.Size = new System.Drawing.Size(211, 22);
-            this.txtBranchNo.TabIndex = 18;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(427, 121);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(44, 14);
-            this.label12.TabIndex = 17;
-            this.label12.Text = "Branch";
-            // 
-            // txtCheckNo
-            // 
-            this.txtCheckNo.Location = new System.Drawing.Point(501, 145);
-            this.txtCheckNo.Name = "txtCheckNo";
-            this.txtCheckNo.Size = new System.Drawing.Size(211, 22);
-            this.txtCheckNo.TabIndex = 20;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(427, 148);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(59, 14);
-            this.label13.TabIndex = 19;
-            this.label13.Text = "Check No.";
-            // 
             // statusStrip1
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -482,10 +498,10 @@
             this.Text = "MHCI";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.txtYear)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAcctLoc)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtYear)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -534,5 +550,6 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripProgressBar tsProgressBar;
+        private System.Windows.Forms.Button btnSubmit;
     }
 }

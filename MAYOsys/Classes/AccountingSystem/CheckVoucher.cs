@@ -14,12 +14,10 @@ namespace MAYOsys.Classes.AccountingSystem
 
         public CheckVoucher()
         {
-            dt.Columns.Add(new DataColumn("AccountTitle"));
+            var pri = new DataColumn("AccountTitle");
+            dt.Columns.Add(pri);
             dt.Columns.Add(new DataColumn("Credit", typeof(decimal)));
-            //dt.Columns.Add(new DataColumn("Quezon"));
-            //dt.Columns.Add(new DataColumn("SM MOA"));
-            //dt.Columns.Add(new DataColumn("SM Bicol"));
-            //dt.Columns.Add(new DataColumn("Madison"));
+            dt.PrimaryKey = new DataColumn[] { pri };
         }
 
         public void AddLocation(string Header)
@@ -35,7 +33,10 @@ namespace MAYOsys.Classes.AccountingSystem
         {
             DataRow dr = dt.NewRow();
             dr[dt.Columns.IndexOf(Header)] = Value;
-            dt.Rows.Add(dr);
+            if (!dt.Rows.Contains(Value))
+            {
+                dt.Rows.Add(dr);
+            }
         }
 
         public DataTable Detail()

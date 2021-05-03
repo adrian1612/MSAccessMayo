@@ -20,11 +20,12 @@ namespace MAYOsys.Forms.AccountingSystem
         DataTable tblAccountTitle;
         DataTable tblLocation;
         DataTable tblPayee;
+
         public Home()
         {
+            LoadFieldInitialize();
             InitializeComponent();
             CheckForIllegalCrossThreadCalls = false;
-            LoadFieldInitialize();
             BindDetail();
         }
 
@@ -35,30 +36,26 @@ namespace MAYOsys.Forms.AccountingSystem
                 tblAccountTitle = s.Table("select AccountTitle from tblChartOfAccounts");
                 tblLocation = s.Table("select Location from tblLocation");
                 tblPayee = s.Table("select Payee from tblpayee");
-                LoadField();
             });
         }
 
         void SetProgressBarMax(int Value)
         {
+            tsProgressBar.Value = 0;
             tsProgressBar.Maximum = Value;
         }
 
         void LoadField()
         {
-            SetProgressBarMax(3);
             cbAccountTitle.DataSource = tblAccountTitle;
             cbAccountTitle.DisplayMember = "AccountTitle";
             cbAccountTitle.ValueMember = "AccountTitle";
-            tsProgressBar.PerformStep();
             cbLocation.DataSource = tblLocation;
             cbLocation.ValueMember = "Location";
             cbLocation.DisplayMember = "Location";
-            tsProgressBar.PerformStep();
             cbPayee.DataSource = tblPayee;
             cbPayee.ValueMember = "Payee";
             cbPayee.DisplayMember = "Payee";
-            tsProgressBar.PerformStep();
         }
 
         void BindDetail()
@@ -98,26 +95,36 @@ namespace MAYOsys.Forms.AccountingSystem
 
         private void btnAllLocation_Click(object sender, EventArgs e)
         {
-            tsProgressBar.Value = 0;
-            SetProgressBarMax(tblLocation.Rows.Count);
-            foreach (DataRow r in tblLocation.Rows)
-            {
-                tsProgressBar.PerformStep();
-                cv.AddLocation(r[0].ToString());
-            }
-            BindDetail();
+            LoadAllLocation();
         }
+
 
         void LoadAllLocation()
         {
-            tsProgressBar.Value = 0;
             SetProgressBarMax(tblLocation.Rows.Count);
             foreach (DataRow r in tblLocation.Rows)
             {
                 cv.AddLocation(r[0].ToString());
                 tsProgressBar.PerformStep();
             }
-            BindDetail();
+            tsProgressBar.Value = 0;
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            foreach (DataColumn c in cv.Detail().Columns)
+            {
+                foreach (DataRow r in cv.Detail().Rows)
+                {
+                    MessageBox.Show($"{c}\n{r[c]}");
+                }
+            }
+        }
+
+
+        private void LoadCB(object sender, EventArgs e)
+        {
+            LoadField();
         }
     }
 }
