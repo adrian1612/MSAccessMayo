@@ -155,6 +155,7 @@
             // dgvAcctLoc
             // 
             this.dgvAcctLoc.AllowUserToAddRows = false;
+            this.dgvAcctLoc.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgvAcctLoc.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvAcctLoc.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,

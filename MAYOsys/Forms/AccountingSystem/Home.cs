@@ -102,8 +102,8 @@ namespace MAYOsys.Forms.AccountingSystem
             SetProgressBarMax(tblLocation.Rows.Count);
             foreach (DataRow r in tblLocation.Rows)
             {
-                cv.AddLocation(r[0].ToString());
                 tsProgressBar.PerformStep();
+                cv.AddLocation(r[0].ToString());
             }
             BindDetail();
         }
