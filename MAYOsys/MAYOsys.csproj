@@ -49,6 +49,8 @@
     <Compile Include="Classes\AccountingSystem\CheckVoucher.cs" />
     <Compile Include="Classes\AccountingSystem\Ledger.cs" />
     <Compile Include="Classes\AccountingSystem\LedgerLocation.cs" />
+    <Compile Include="Classes\AccountingSystem\LocationJO.cs" />
+    <Compile Include="Classes\Convertion.cs" />
     <Compile Include="Forms\AccountingSystem\Home.cs">
       <SubType>Form</SubType>
     </Compile>

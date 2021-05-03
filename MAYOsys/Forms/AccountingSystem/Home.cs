@@ -22,12 +22,18 @@ namespace MAYOsys.Forms.AccountingSystem
 
         void BindDetail()
         {
-            dataGridView1.DataSource = cv.Detail();
+            dgvAcctLoc.DataSource = cv.Detail();
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            cv.AddValueToHeader("AccountTitle", comboBox2.Text);
+            cv.AddValueToHeader("AccountTitle", cbAccountTitle.Text);
+            BindDetail();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            cv.AddLocation(cbLocation.Text);
             BindDetail();
         }
     }
