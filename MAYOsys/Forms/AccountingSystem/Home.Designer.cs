@@ -258,12 +258,12 @@
             this.cbLocation.FormattingEnabled = true;
             this.cbLocation.Location = new System.Drawing.Point(572, 44);
             this.cbLocation.Name = "cbLocation";
-            this.cbLocation.Size = new System.Drawing.Size(115, 22);
+            this.cbLocation.Size = new System.Drawing.Size(187, 22);
             this.cbLocation.TabIndex = 14;
             // 
             // btnAddLocation
             // 
-            this.btnAddLocation.Location = new System.Drawing.Point(690, 43);
+            this.btnAddLocation.Location = new System.Drawing.Point(765, 42);
             this.btnAddLocation.Name = "btnAddLocation";
             this.btnAddLocation.Size = new System.Drawing.Size(81, 25);
             this.btnAddLocation.TabIndex = 16;
@@ -273,12 +273,13 @@
             // 
             // btnAllLocation
             // 
-            this.btnAllLocation.Location = new System.Drawing.Point(772, 43);
+            this.btnAllLocation.Location = new System.Drawing.Point(847, 42);
             this.btnAllLocation.Name = "btnAllLocation";
             this.btnAllLocation.Size = new System.Drawing.Size(81, 25);
             this.btnAllLocation.TabIndex = 18;
             this.btnAllLocation.Text = "All Location";
             this.btnAllLocation.UseVisualStyleBackColor = true;
+            this.btnAllLocation.Click += new System.EventHandler(this.btnAllLocation_Click);
             // 
             // btnAssignLocationJO
             // 
@@ -461,8 +462,10 @@
             // 
             // tsProgressBar
             // 
+            this.tsProgressBar.Maximum = 30;
             this.tsProgressBar.Name = "tsProgressBar";
-            this.tsProgressBar.Size = new System.Drawing.Size(100, 16);
+            this.tsProgressBar.Size = new System.Drawing.Size(350, 16);
+            this.tsProgressBar.Step = 1;
             // 
             // Home
             // 
@@ -471,10 +474,11 @@
             this.ClientSize = new System.Drawing.Size(1055, 736);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.groupBox1);
+            this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "Home";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Check Voucher";
+            this.Text = "MHCI";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
