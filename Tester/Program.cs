@@ -24,11 +24,16 @@ namespace Tester
             {
                 if (c.ToString() != "Account Title")
                 {
-                    Console.WriteLine("{0} - tbl_LedgerLocation", c);
+                    string tempLoc = "";
                     foreach (DataRow r in dt.Rows)
                     {
                         if (Convert.ToDecimal(r[c]) >= 1)
                         {
+                            if (tempLoc != c.ToString())
+                            {
+                                Console.WriteLine("Location: {0}", c);
+                            }
+                            tempLoc = c.ToString();
                             if (c.ToString() == "Credit")
                             {
                                 Console.WriteLine("Account Title: {0}\nDebit : {2:c}\tCredit : {1:c}", r["Account Title"], r[c], 0);

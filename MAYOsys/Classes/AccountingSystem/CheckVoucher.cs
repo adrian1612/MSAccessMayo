@@ -44,24 +44,21 @@ namespace MAYOsys.Classes.AccountingSystem
             {
                 if (c.ToString() != "AccountTitle")
                 {
-                    var LLID = s.Insert("tbl_LedgerLocation", p =>
-                    {
-                        p.Add("LID", LedgerID);
-                        p.Add("Location", c.ToString());
-                    }, true);
-
-                    locationJO.ForEach(lj =>
-                    {
-                        s.Insert("tbl_LocationJO", p =>
-                        {
-                            p.Add("JOID", lj.JOID);
-                            p.Add("LLID", lj.LLID);
-                        });
-                    });
+                    string tempLoc = "";
+                    int LLID = 0;
                     foreach (DataRow r in dt.Rows)
                     {
                         if (r[c] != DBNull.Value)
                         {
+                            if (tempLoc != c.ToString())
+                            {
+                                LLID = s.Insert("tbl_LedgerLocation", p =>
+                                {
+                                    p.Add("LID", LedgerID);
+                                    p.Add("Location", c.ToString());
+                                }, true);
+                            }
+                            tempLoc = c.ToString();
                             if (c.ToString() == "Credit")
                             {
                                 s.Insert("tbl_AccountTitle", p =>
@@ -88,6 +85,15 @@ namespace MAYOsys.Classes.AccountingSystem
                     }
                 }
             }
+
+            locationJO.ForEach(lj =>
+            {
+                s.Insert("tbl_LocationJO", p =>
+                {
+                    p.Add("JOID", lj.JOID);
+                    p.Add("LLID", lj.LLID);
+                });
+            });
         }
 
         public DataTable Detail()
