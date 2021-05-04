@@ -38,7 +38,7 @@ namespace MAYOsys.Forms.AccountingSystem
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-            var item = new LocationJO(Convert.ToInt32(cbJOID.Text), cbLocation.Text);
+            var item = new LocationJO(cbJOID.Text, cbLocation.Text);
             Entry?.Invoke(item);
         }
     }

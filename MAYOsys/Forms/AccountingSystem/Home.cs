@@ -21,23 +21,24 @@ namespace MAYOsys.Forms.AccountingSystem
         DataTable tblAccountTitle;
         DataTable tblLocation;
         DataTable tblPayee;
+        DataTable tblBank;
 
         public Home()
         {
-            LoadFieldInitialize();
             InitializeComponent();
+            LoadFieldInitialize();
             CheckForIllegalCrossThreadCalls = false;
             BindDetail();
         }
 
-        async void LoadFieldInitialize()
+        void LoadFieldInitialize()
         {
-            await Task.Run(() =>
-            {
-                tblAccountTitle = s.Table("select AccountTitle from tblChartOfAccounts where accounttitle <> ''");
-                tblLocation = s.Table("select Location from tblLocation");
-                tblPayee = s.Table("select Payee from tblpayee");
-            });
+            tblAccountTitle = s.Table("select AccountTitle from tblChartOfAccounts where accounttitle <> ''");
+            tblLocation = s.Table("select Location from tblLocation");
+            tblPayee = s.Table("select Payee from tblpayee");
+            tblBank = mys.Table("select [Bank] + ' | ' + [AccountNo] AS Display,* from tbl_Bank");
+            LoadField();
+            BindBankDetail();
         }
 
         void SetProgressBarMax(int Value)
@@ -57,6 +58,9 @@ namespace MAYOsys.Forms.AccountingSystem
             cbPayee.DataSource = tblPayee;
             cbPayee.ValueMember = "Payee";
             cbPayee.DisplayMember = "Payee";
+            cbBank.DataSource = tblBank;
+            cbBank.DisplayMember = "Display";
+            cbBank.ValueMember = "AccountNo";
         }
 
         void BindDetail()
@@ -113,32 +117,25 @@ namespace MAYOsys.Forms.AccountingSystem
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            mys.Insert("tbl_Ledger", p =>
+            var LID =  mys.Insert("tbl_Ledger", p =>
             {
                 p.Add("SalesNo", txtCVNo.Text);
                 p.Add("LDate", DateTime.Parse(dtpLDate.Text));
-                p.Add("LMonth", cbMonth.Text);
-                p.Add("LYear", txtYear.Value);
+                p.Add("Month", cbMonth.Text);
+                p.Add("Year", txtYear.Value);
                 p.Add("Payee", cbPayee.Text);
                 p.Add("Particular", txtParticular.Text);
-                p.Add("Bank", txtBank.Text);
-                p.Add("AccountNo", txtAccountNo.Text);
-                p.Add("CheckNo", txtCheckNo.Text);
+                p.Add("Bank", cbBank.SelectedValue.ToString());
                 p.Add("Branch", txtBranchNo.Text);
-            }, true);
-            if (mys.HasException)
-            {
-                MessageBox.Show(mys.Exception);
-            }
-            var LID = mys.GetLastID;
+            }, true); 
             cv.InsertDetail(LID, cv.Detail(), listLocationJO);
             MessageBox.Show("Done");
         }
 
-
-        private void LoadCB(object sender, EventArgs e)
+        void BindBankDetail()
         {
-            LoadField();
+            txtAccountNo.DataBindings.Add("text", tblBank, "AccountNo");
+            txtBranchNo.DataBindings.Add("text", tblBank, "Branch");
         }
     }
 }

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbBank = new System.Windows.Forms.ComboBox();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.txtCheckNo = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
@@ -36,7 +37,6 @@
             this.label12 = new System.Windows.Forms.Label();
             this.txtAccountNo = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.txtBank = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.txtYear = new System.Windows.Forms.NumericUpDown();
             this.label9 = new System.Windows.Forms.Label();
@@ -77,6 +77,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.cbBank);
             this.groupBox1.Controls.Add(this.btnSubmit);
             this.groupBox1.Controls.Add(this.txtCheckNo);
             this.groupBox1.Controls.Add(this.label13);
@@ -84,7 +85,6 @@
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.txtAccountNo);
             this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.txtBank);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.txtYear);
             this.groupBox1.Controls.Add(this.label9);
@@ -105,6 +105,15 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Accounting System";
+            // 
+            // cbBank
+            // 
+            this.cbBank.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbBank.FormattingEnabled = true;
+            this.cbBank.Location = new System.Drawing.Point(501, 62);
+            this.cbBank.Name = "cbBank";
+            this.cbBank.Size = new System.Drawing.Size(211, 22);
+            this.cbBank.TabIndex = 22;
             // 
             // btnSubmit
             // 
@@ -136,6 +145,7 @@
             // 
             this.txtBranchNo.Location = new System.Drawing.Point(501, 118);
             this.txtBranchNo.Name = "txtBranchNo";
+            this.txtBranchNo.ReadOnly = true;
             this.txtBranchNo.Size = new System.Drawing.Size(211, 22);
             this.txtBranchNo.TabIndex = 18;
             // 
@@ -152,6 +162,7 @@
             // 
             this.txtAccountNo.Location = new System.Drawing.Point(501, 90);
             this.txtAccountNo.Name = "txtAccountNo";
+            this.txtAccountNo.ReadOnly = true;
             this.txtAccountNo.Size = new System.Drawing.Size(211, 22);
             this.txtAccountNo.TabIndex = 16;
             // 
@@ -163,13 +174,6 @@
             this.label11.Size = new System.Drawing.Size(70, 14);
             this.label11.TabIndex = 15;
             this.label11.Text = "Account No.";
-            // 
-            // txtBank
-            // 
-            this.txtBank.Location = new System.Drawing.Point(501, 62);
-            this.txtBank.Name = "txtBank";
-            this.txtBank.Size = new System.Drawing.Size(211, 22);
-            this.txtBank.TabIndex = 14;
             // 
             // label10
             // 
@@ -334,7 +338,6 @@
             this.cbLocation.Name = "cbLocation";
             this.cbLocation.Size = new System.Drawing.Size(187, 22);
             this.cbLocation.TabIndex = 14;
-            this.cbLocation.Click += new System.EventHandler(this.LoadCB);
             // 
             // label6
             // 
@@ -353,7 +356,6 @@
             this.cbAccountTitle.Name = "cbAccountTitle";
             this.cbAccountTitle.Size = new System.Drawing.Size(220, 22);
             this.cbAccountTitle.TabIndex = 9;
-            this.cbAccountTitle.Click += new System.EventHandler(this.LoadCB);
             // 
             // btnAddTitle
             // 
@@ -421,7 +423,6 @@
             this.cbPayee.Name = "cbPayee";
             this.cbPayee.Size = new System.Drawing.Size(294, 22);
             this.cbPayee.TabIndex = 5;
-            this.cbPayee.Click += new System.EventHandler(this.LoadCB);
             // 
             // label3
             // 
@@ -546,10 +547,10 @@
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txtAccountNo;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox txtBank;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripProgressBar tsProgressBar;
         private System.Windows.Forms.Button btnSubmit;
+        private System.Windows.Forms.ComboBox cbBank;
     }
 }

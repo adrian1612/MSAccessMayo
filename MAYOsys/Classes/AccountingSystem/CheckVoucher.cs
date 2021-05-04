@@ -44,12 +44,11 @@ namespace MAYOsys.Classes.AccountingSystem
             {
                 if (c.ToString() != "AccountTitle")
                 {
-                    s.Insert("tbl_LedgerLocation", p =>
+                    var LLID = s.Insert("tbl_LedgerLocation", p =>
                     {
                         p.Add("LID", LedgerID);
                         p.Add("Location", c.ToString());
                     }, true);
-                    var LLID = s.GetLastID;
 
                     locationJO.ForEach(lj =>
                     {
