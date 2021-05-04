@@ -16,6 +16,7 @@ namespace MAYOsys.Forms.AccountingSystem
     {
         CheckVoucher cv = new CheckVoucher();
         dbcontrol s = new dbcontrol();
+        dbcontrol mys = new dbcontrol("provider=microsoft.ace.oledb.12.0;data source=|DataDirectory|MHCICV.mdb");
 
         DataTable tblAccountTitle;
         DataTable tblLocation;
@@ -33,7 +34,7 @@ namespace MAYOsys.Forms.AccountingSystem
         {
             await Task.Run(() =>
             {
-                tblAccountTitle = s.Table("select AccountTitle from tblChartOfAccounts");
+                tblAccountTitle = s.Table("select AccountTitle from tblChartOfAccounts where accounttitle <> ''");
                 tblLocation = s.Table("select Location from tblLocation");
                 tblPayee = s.Table("select Payee from tblpayee");
             });
@@ -112,13 +113,26 @@ namespace MAYOsys.Forms.AccountingSystem
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            foreach (DataColumn c in cv.Detail().Columns)
+            mys.Insert("tbl_Ledger", p =>
             {
-                foreach (DataRow r in cv.Detail().Rows)
-                {
-                    MessageBox.Show($"{c}\n{r[c]}");
-                }
+                p.Add("SalesNo", txtCVNo.Text);
+                p.Add("LDate", DateTime.Parse(dtpLDate.Text));
+                p.Add("LMonth", cbMonth.Text);
+                p.Add("LYear", txtYear.Value);
+                p.Add("Payee", cbPayee.Text);
+                p.Add("Particular", txtParticular.Text);
+                p.Add("Bank", txtBank.Text);
+                p.Add("AccountNo", txtAccountNo.Text);
+                p.Add("CheckNo", txtCheckNo.Text);
+                p.Add("Branch", txtBranchNo.Text);
+            }, true);
+            if (mys.HasException)
+            {
+                MessageBox.Show(mys.Exception);
             }
+            var LID = mys.GetLastID;
+            cv.InsertDetail(LID, cv.Detail(), listLocationJO);
+            MessageBox.Show("Done");
         }
 
 

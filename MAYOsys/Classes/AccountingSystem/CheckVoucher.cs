@@ -11,7 +11,7 @@ namespace MAYOsys.Classes.AccountingSystem
     class CheckVoucher
     {
         DataTable dt = new DataTable();
-
+        dbcontrol s = new dbcontrol("provider=microsoft.ace.oledb.12.0;data source=|DataDirectory|MHCICV.mdb");
         public CheckVoucher()
         {
             var pri = new DataColumn("AccountTitle");
@@ -27,7 +27,6 @@ namespace MAYOsys.Classes.AccountingSystem
                 dt.Columns.Add(new DataColumn(Header, typeof(decimal)));
             }
         }
-
        
         public void AddValueToHeader(string Header, string Value)
         {
@@ -36,6 +35,59 @@ namespace MAYOsys.Classes.AccountingSystem
             if (!dt.Rows.Contains(Value))
             {
                 dt.Rows.Add(dr);
+            }
+        }
+
+        public void InsertDetail(int LedgerID, DataTable dt, List<LocationJO> locationJO)
+        {
+            foreach (DataColumn c in dt.Columns)
+            {
+                if (c.ToString() != "AccountTitle")
+                {
+                    s.Insert("tbl_LedgerLocation", p =>
+                    {
+                        p.Add("LID", LedgerID);
+                        p.Add("Location", c.ToString());
+                    }, true);
+                    var LLID = s.GetLastID;
+
+                    locationJO.ForEach(lj =>
+                    {
+                        s.Insert("tbl_LocationJO", p =>
+                        {
+                            p.Add("JOID", lj.JOID);
+                            p.Add("LLID", lj.LLID);
+                        });
+                    });
+                    foreach (DataRow r in dt.Rows)
+                    {
+                        if (r[c] != DBNull.Value)
+                        {
+                            if (c.ToString() == "Credit")
+                            {
+                                s.Insert("tbl_AccountTitle", p =>
+                                {
+                                    p.Add("LLID", LLID);
+                                    p.Add("LID", LedgerID);
+                                    p.Add("AccountTitle", r["AccountTitle"]);
+                                    p.Add("Debit", 0);
+                                    p.Add("Credit", (decimal)r[c]);
+                                });
+                            }
+                            else
+                            {
+                                s.Insert("tbl_AccountTitle", p =>
+                                {
+                                    p.Add("LLID", LLID);
+                                    p.Add("LID", LedgerID);
+                                    p.Add("AccountTitle", r["AccountTitle"]);
+                                    p.Add("Debit", (decimal)r[c]);
+                                    p.Add("Credit", 0);
+                                });
+                            }
+                        }
+                    }
+                }
             }
         }
 

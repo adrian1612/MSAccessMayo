@@ -10,7 +10,7 @@ namespace MAYOsys.Classes.AccountingSystem
     public class LocationJO
     {
         public int      ID          { get; set; }
-        public int      JOID        { get; set; }
+        public string      JOID        { get; set; }
         public int      LLID        { get; set; }
         public string   Location    { get; set; }
 
@@ -19,7 +19,7 @@ namespace MAYOsys.Classes.AccountingSystem
 
         }
 
-        public LocationJO(int ID, int JOID, int LLID, string Location)
+        public LocationJO(int ID, string JOID, int LLID, string Location)
         {
             this.ID         = ID           ;
             this.JOID       = JOID         ;
@@ -27,14 +27,14 @@ namespace MAYOsys.Classes.AccountingSystem
             this.Location = Location;
         }
 
-        public LocationJO(int JOID, int LLID, string Location)
+        public LocationJO(string JOID, int LLID, string Location)
         {
             this.JOID = JOID;
             this.LLID = LLID;
             this.Location = Location;
         }
 
-        public LocationJO(int JOID, string Location)
+        public LocationJO(string JOID, string Location)
         {
             this.JOID = JOID;
             this.Location = Location;
@@ -43,7 +43,7 @@ namespace MAYOsys.Classes.AccountingSystem
         public LocationJO(DataRow r)
         {
            ID =       (int)r["ID"];
-           JOID =     (int)r["JOID"];
+           JOID =     r["JOID"].ToString();
            LLID =     (int)r["LLID"];
            Location = r["Location"].ToString();
         }

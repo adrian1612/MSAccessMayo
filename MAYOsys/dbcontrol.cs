@@ -12,5 +12,10 @@ namespace MAYOsys
         {
 
         }
+
+        public dbcontrol(string connectionstring) : base(DatabaseType.OleDb, connectionstring)
+        {
+
+        }
     }
 }
