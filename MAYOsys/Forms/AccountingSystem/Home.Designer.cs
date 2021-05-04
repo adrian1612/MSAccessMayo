@@ -64,8 +64,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.dtpLDate = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtCVNo = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tsProgressBar = new System.Windows.Forms.ToolStripProgressBar();
             this.groupBox1.SuspendLayout();
@@ -97,8 +95,6 @@
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.dtpLDate);
             this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.txtCVNo);
-            this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Location = new System.Drawing.Point(12, 13);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(1031, 689);
@@ -437,7 +433,7 @@
             // 
             this.dtpLDate.CustomFormat = "MMM dd, yyyy";
             this.dtpLDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpLDate.Location = new System.Drawing.Point(279, 31);
+            this.dtpLDate.Location = new System.Drawing.Point(105, 31);
             this.dtpLDate.Name = "dtpLDate";
             this.dtpLDate.Size = new System.Drawing.Size(120, 22);
             this.dtpLDate.TabIndex = 3;
@@ -445,27 +441,11 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(224, 36);
+            this.label2.Location = new System.Drawing.Point(16, 35);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(33, 14);
             this.label2.TabIndex = 2;
             this.label2.Text = "Date";
-            // 
-            // txtCVNo
-            // 
-            this.txtCVNo.Location = new System.Drawing.Point(105, 31);
-            this.txtCVNo.Name = "txtCVNo";
-            this.txtCVNo.Size = new System.Drawing.Size(100, 22);
-            this.txtCVNo.TabIndex = 1;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(16, 36);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(41, 14);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "CV No.";
             // 
             // statusStrip1
             // 
@@ -496,7 +476,7 @@
             this.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "Home";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MHCI";
+            this.Text = "MHCI - Adrian Jaspio";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtYear)).EndInit();
@@ -515,8 +495,6 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DateTimePicker dtpLDate;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtCVNo;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtParticular;
         private System.Windows.Forms.Label label4;
