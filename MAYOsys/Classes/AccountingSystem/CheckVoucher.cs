@@ -18,6 +18,7 @@ namespace MAYOsys.Classes.AccountingSystem
             dt.Columns.Add(new DataColumn("Quezon"));
             dt.Columns.Add(new DataColumn("MOA"));
             dt.Columns.Add(new DataColumn("SMBicol"));
+            dt.Columns.Add(new DataColumn("Credit"));
         }
 
        

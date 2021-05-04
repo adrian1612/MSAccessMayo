@@ -30,5 +30,17 @@ namespace MAYOsys.Forms.AccountingSystem
             cv.AddValueToHeader("AccountTitle", comboBox2.Text);
             BindDetail();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            foreach (DataColumn c in cv.Detail().Columns)
+            {
+                string Label = c.ToString();
+                foreach (DataRow r in cv.Detail().Rows)
+                {
+                    MessageBox.Show($"{Label}: {r[c]}");
+                }
+            }
+        }
     }
 }
