@@ -1,57 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Tester
+namespace MAYOsys.Classes
 {
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            DataTable dt = new DataTable();
-            dt.Columns.Add("Account Title");
-            dt.Columns.Add("SM MOA");
-            dt.Columns.Add("SM Lucena");
-            dt.Columns.Add("Credit");
-            dt.Rows.Add("Salaries and Wages", 3242, 5435, 0);
-            dt.Rows.Add("Night Shift Premium", 452, 765, 0);
-            dt.Rows.Add("SSS Salary Loan Payable", 0, 0, 24984.53);
-
-            foreach (DataColumn c in dt.Columns)
-            {
-                if (c.ToString() != "Account Title")
-                {
-                    string tempLoc = "";
-                    foreach (DataRow r in dt.Rows)
-                    {
-                        if (Convert.ToDecimal(r[c]) >= 1)
-                        {
-                            if (tempLoc != c.ToString())
-                            {
-                                Console.WriteLine("Location: {0}", c);
-                            }
-                            tempLoc = c.ToString();
-                            if (c.ToString() == "Credit")
-                            {
-                                Console.WriteLine("Account Title: {0}\nDebit : {2:c}\tCredit : {1:c}", r["Account Title"], r[c], 0);
-                            }
-                            else
-                            {
-                                Console.WriteLine("Account Title: {0}\nDebit : {1:c}\tCredit: {2:c}", r["Account Title"], r[c], 0);
-                            }
-                        }
-                    }
-                    Console.WriteLine("\n-----------Next Column-----------\n");
-                }
-            }
-            Console.ReadLine();
-        }
-    }
-
-    class Convertion
+    public class Convertion
     {
         public String changeNumericToWords(double numb)
         {

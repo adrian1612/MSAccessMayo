@@ -9,6 +9,7 @@ namespace MAYOsys.Classes.AccountingSystem
 {
     class Ledger
     {
+        Convertion conv = new Convertion();
         public int      ID          { get; set; }
         public string   SalesNo     { get; set; }
         public DateTime LDate       { get; set; }
@@ -30,8 +31,9 @@ namespace MAYOsys.Classes.AccountingSystem
         public string   Address     { get; set; }
         public string   TIN         { get; set; }
         public string   PONo        { get; set; }
+        //public string AmountInWords { get { return conv.changeCurrencyToWords() } }
 
-		public Ledger()
+        public Ledger()
         {
 
         }
