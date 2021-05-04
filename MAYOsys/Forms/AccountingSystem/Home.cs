@@ -126,7 +126,6 @@ namespace MAYOsys.Forms.AccountingSystem
                 p.Add("Payee", cbPayee.Text);
                 p.Add("Particular", txtParticular.Text);
                 p.Add("Bank", cbBank.SelectedValue.ToString());
-                p.Add("Branch", txtBranchNo.Text);
             }, true); 
             cv.InsertDetail(LID, cv.Detail(), listLocationJO);
             MessageBox.Show("Done");
