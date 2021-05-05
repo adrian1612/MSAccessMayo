@@ -39,7 +39,6 @@ namespace MAYOsys.Forms.AccountingSystem.JournalVoucher
             tblPayee = s.Table("select Payee from tblpayee order by payee asc");
             tblBank = mys.Table("select [Bank] + ' | ' + [AccountNo] AS Display,* from tbl_Bank order by Bank asc");
             LoadField();
-            BindBankDetail();
         }
 
         void SetProgressBarMax(int Value)
@@ -59,9 +58,6 @@ namespace MAYOsys.Forms.AccountingSystem.JournalVoucher
             cbPayee.DataSource = tblPayee;
             cbPayee.ValueMember = "Payee";
             cbPayee.DisplayMember = "Payee";
-            cbBank.DataSource = tblBank;
-            cbBank.DisplayMember = "Display";
-            cbBank.ValueMember = "AccountNo";
         }
 
         void BindDetail()
@@ -132,16 +128,9 @@ namespace MAYOsys.Forms.AccountingSystem.JournalVoucher
                 p.Add("Year", txtYear.Value);
                 p.Add("Payee", cbPayee.Text);
                 p.Add("Particular", txtParticular.Text);
-                p.Add("Bank", cbBank.SelectedValue.ToString());
             }, true); 
             cv.InsertDetail(LID, cv.Detail(), listLocationJO);
             MessageBox.Show("Done");
-        }
-
-        void BindBankDetail()
-        {
-            txtAccountNo.DataBindings.Add("text", tblBank, "AccountNo");
-            txtBranchNo.DataBindings.Add("text", tblBank, "Branch");
         }
     }
 }

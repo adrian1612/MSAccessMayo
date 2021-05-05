@@ -29,15 +29,6 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.cbBank = new System.Windows.Forms.ComboBox();
-            this.btnSubmit = new System.Windows.Forms.Button();
-            this.txtCheckNo = new System.Windows.Forms.TextBox();
-            this.label13 = new System.Windows.Forms.Label();
-            this.txtBranchNo = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.txtAccountNo = new System.Windows.Forms.TextBox();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
             this.txtYear = new System.Windows.Forms.NumericUpDown();
             this.label9 = new System.Windows.Forms.Label();
             this.cbMonth = new System.Windows.Forms.ComboBox();
@@ -79,15 +70,6 @@
             // 
             this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.cbBank);
-            this.groupBox1.Controls.Add(this.btnSubmit);
-            this.groupBox1.Controls.Add(this.txtCheckNo);
-            this.groupBox1.Controls.Add(this.label13);
-            this.groupBox1.Controls.Add(this.txtBranchNo);
-            this.groupBox1.Controls.Add(this.label12);
-            this.groupBox1.Controls.Add(this.txtAccountNo);
-            this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.txtYear);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.cbMonth);
@@ -105,84 +87,6 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Accounting System";
-            // 
-            // cbBank
-            // 
-            this.cbBank.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbBank.FormattingEnabled = true;
-            this.cbBank.Location = new System.Drawing.Point(501, 76);
-            this.cbBank.Name = "cbBank";
-            this.cbBank.Size = new System.Drawing.Size(211, 22);
-            this.cbBank.TabIndex = 22;
-            // 
-            // btnSubmit
-            // 
-            this.btnSubmit.Location = new System.Drawing.Point(501, 196);
-            this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(211, 36);
-            this.btnSubmit.TabIndex = 21;
-            this.btnSubmit.Text = "Submit";
-            this.btnSubmit.UseVisualStyleBackColor = true;
-            this.btnSubmit.Click += new System.EventHandler(this.button1_Click_1);
-            // 
-            // txtCheckNo
-            // 
-            this.txtCheckNo.Location = new System.Drawing.Point(501, 159);
-            this.txtCheckNo.Name = "txtCheckNo";
-            this.txtCheckNo.Size = new System.Drawing.Size(211, 22);
-            this.txtCheckNo.TabIndex = 20;
-            // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(427, 162);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(59, 14);
-            this.label13.TabIndex = 19;
-            this.label13.Text = "Check No.";
-            // 
-            // txtBranchNo
-            // 
-            this.txtBranchNo.Location = new System.Drawing.Point(501, 132);
-            this.txtBranchNo.Name = "txtBranchNo";
-            this.txtBranchNo.ReadOnly = true;
-            this.txtBranchNo.Size = new System.Drawing.Size(211, 22);
-            this.txtBranchNo.TabIndex = 18;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(427, 135);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(44, 14);
-            this.label12.TabIndex = 17;
-            this.label12.Text = "Branch";
-            // 
-            // txtAccountNo
-            // 
-            this.txtAccountNo.Location = new System.Drawing.Point(501, 104);
-            this.txtAccountNo.Name = "txtAccountNo";
-            this.txtAccountNo.ReadOnly = true;
-            this.txtAccountNo.Size = new System.Drawing.Size(211, 22);
-            this.txtAccountNo.TabIndex = 16;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(427, 107);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(70, 14);
-            this.label11.TabIndex = 15;
-            this.label11.Text = "Account No.";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(427, 79);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(34, 14);
-            this.label10.TabIndex = 13;
-            this.label10.Text = "Bank";
             // 
             // txtYear
             // 
@@ -541,17 +445,8 @@
         private System.Windows.Forms.ListView lvJOAssign;
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
-        private System.Windows.Forms.TextBox txtCheckNo;
-        private System.Windows.Forms.Label label13;
-        private System.Windows.Forms.TextBox txtBranchNo;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox txtAccountNo;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.Label label10;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripProgressBar tsProgressBar;
-        private System.Windows.Forms.Button btnSubmit;
-        private System.Windows.Forms.ComboBox cbBank;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboBox1;
     }
