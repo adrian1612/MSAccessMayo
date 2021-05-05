@@ -14,10 +14,10 @@ namespace MAYOsys.Classes.AccountingSystem
         dbcontrol s = new dbcontrol("provider=microsoft.ace.oledb.12.0;data source=|DataDirectory|MHCICV.mdb");
         public CheckVoucher()
         {
-            var pri = new DataColumn("AccountTitle");
-            dt.Columns.Add(pri);
-            dt.Columns.Add(new DataColumn("Credit", typeof(decimal)));
-            dt.PrimaryKey = new DataColumn[] { pri };
+            dt.Columns.Add(new DataColumn("AccountTitle"));
+            dt.Columns.Add(new DataColumn("Quezon"));
+            dt.Columns.Add(new DataColumn("MOA"));
+            dt.Columns.Add(new DataColumn("SMBicol"));
         }
 
         public void AddLocation(string Header)
