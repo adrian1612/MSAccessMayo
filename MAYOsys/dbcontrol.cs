@@ -8,7 +8,7 @@ namespace MAYOsys
 {
     public class dbcontrol : AAJControl
     {
-        public dbcontrol() : base(DatabaseType.OleDb, "PROVIDER=MICROSOFT.ACE.OLEDB.12.0;DATA SOURCE=|DataDirectory|MAYO - IAS v.4-020321.mdb")
+        public dbcontrol() : base(DatabaseType.OleDb, "provider=microsoft.ace.oledb.12.0;data source=|DataDirectory|MHCICV.mdb")
         {
 
         }

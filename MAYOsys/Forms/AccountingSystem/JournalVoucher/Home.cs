@@ -55,9 +55,6 @@ namespace MAYOsys.Forms.AccountingSystem.JournalVoucher
             cbLocation.DataSource = tblLocation;
             cbLocation.ValueMember = "Location";
             cbLocation.DisplayMember = "Location";
-            cbPayee.DataSource = tblPayee;
-            cbPayee.ValueMember = "Payee";
-            cbPayee.DisplayMember = "Payee";
         }
 
         void BindDetail()
@@ -126,7 +123,6 @@ namespace MAYOsys.Forms.AccountingSystem.JournalVoucher
                 p.Add("LDate", DateTime.Parse(dtpLDate.Text));
                 p.Add("Month", cbMonth.Text);
                 p.Add("Year", txtYear.Value);
-                p.Add("Payee", cbPayee.Text);
                 p.Add("Particular", txtParticular.Text);
             }, true); 
             cv.InsertDetail(LID, cv.Detail(), listLocationJO);

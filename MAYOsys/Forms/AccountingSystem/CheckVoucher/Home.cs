@@ -17,7 +17,6 @@ namespace MAYOsys.Forms.AccountingSystem
     {
         CheckVoucher cv = new CheckVoucher();
         dbcontrol s = new dbcontrol();
-        dbcontrol mys = new dbcontrol("provider=microsoft.ace.oledb.12.0;data source=|DataDirectory|MHCICV.mdb");
 
         DataTable tblAccountTitle;
         DataTable tblLocation;
@@ -26,7 +25,7 @@ namespace MAYOsys.Forms.AccountingSystem
 
         public Home()
         {
-            mys.ErrorOccured += Mys_ErrorOccured;
+           s.ErrorOccured += Mys_ErrorOccured;
             InitializeComponent();
             LoadFieldInitialize();
             cbMonth.SelectedIndex = 0;
@@ -41,10 +40,10 @@ namespace MAYOsys.Forms.AccountingSystem
 
         void LoadFieldInitialize()
         {
-            tblAccountTitle = s.Table("select AccountTitle from tblChartOfAccounts where accounttitle <> '' order by accounttitle asc");
-            tblLocation = s.Table("select Location from tblLocation order by location asc");
-            tblPayee = s.Table("select Payee from tblpayee order by payee asc");
-            tblBank = mys.Table("select [Bank] + ' | ' + [AccountNo] AS Display,* from tbl_Bank order by Bank asc");
+            tblAccountTitle = s.Table("qryDisplayAccountTitle", null, CommandType.StoredProcedure);
+            tblLocation = s.Table("qryDisplayLocation", null, CommandType.StoredProcedure);
+            tblPayee = s.Table("qryDisplayPayee", null, CommandType.StoredProcedure);
+            tblBank = s.Table("qryDisplayBankInfo", null, CommandType.StoredProcedure);
             LoadField();
             BindBankDetail();
         }
@@ -57,18 +56,17 @@ namespace MAYOsys.Forms.AccountingSystem
 
         void LoadField()
         {
-            cbAccountTitle.DataSource = tblAccountTitle;
-            cbAccountTitle.DisplayMember = "AccountTitle";
-            cbAccountTitle.ValueMember = "AccountTitle";
-            cbLocation.DataSource = tblLocation;
-            cbLocation.ValueMember = "Location";
-            cbLocation.DisplayMember = "Location";
-            cbPayee.DataSource = tblPayee;
-            cbPayee.ValueMember = "Payee";
-            cbPayee.DisplayMember = "Payee";
-            cbBank.DataSource = tblBank;
-            cbBank.DisplayMember = "Display";
-            cbBank.ValueMember = "AccountNo";
+            var listtable = new List<DataTable> { tblAccountTitle, tblLocation, tblPayee, tblBank };
+            var listCB = new List<ComboBox> { cbAccountTitle, cbLocation, cbPayee, cbBank };
+            var liststrd = new Dictionary<string, string> { { "AccountTitle", "AccountTitle" }, { "Location", "Location" }, { "Payee", "Payee" }, { "Display", "AccountNo" } };
+            int i = 0;
+            foreach (KeyValuePair<string, string> str in liststrd)
+            {
+                listCB[i].DataSource = listtable[i];
+                listCB[i].ValueMember = str.Value;
+                listCB[i].DisplayMember = str.Key;
+                i++;
+            }
         }
 
         void BindDetail()
@@ -79,13 +77,11 @@ namespace MAYOsys.Forms.AccountingSystem
         private void button1_Click(object sender, EventArgs e)
         {
             cv.AddValueToHeader("AccountTitle", cbAccountTitle.Text);
-            BindDetail();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             cv.AddLocation(cbLocation.Text);
-            BindDetail();
         }
 
         private void btnAssignLocationJO_Click(object sender, EventArgs e)
@@ -131,11 +127,11 @@ namespace MAYOsys.Forms.AccountingSystem
                 return;
             }
             int LastLedgerID = 0;
-            mys.Query("select max(id) from tbl_ckledger").ForEach(r =>
+            s.Query("select max(id) from tbl_ckledger").ForEach(r =>
             {
                 LastLedgerID = r[0] == DBNull.Value ? 1 : (int)r[0] + 1;
             });
-            var LID =  mys.Insert("tbl_CKLedger", p =>
+            var LID =  s.Insert("tbl_CKLedger", p =>
             {
                 var cvFormat = Convert.ToDateTime(dtpLDate.Text);
                 p.Add("SalesNo", $"{cvFormat:yy}{cvFormat:MM}{LastLedgerID}");

@@ -11,7 +11,7 @@ namespace MAYOsys.Classes.AccountingSystem
     class CheckVoucher
     {
         DataTable dt = new DataTable();
-        dbcontrol s = new dbcontrol("provider=microsoft.ace.oledb.12.0;data source=|DataDirectory|MHCICV.mdb");
+        dbcontrol s = new dbcontrol();
         public CheckVoucher()
         {
             var pri = new DataColumn("AccountTitle");

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cbBank = new System.Windows.Forms.ComboBox();
             this.btnSubmit = new System.Windows.Forms.Button();
@@ -106,7 +107,7 @@
             // 
             this.cbBank.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbBank.FormattingEnabled = true;
-            this.cbBank.Location = new System.Drawing.Point(501, 62);
+            this.cbBank.Location = new System.Drawing.Point(501, 57);
             this.cbBank.Name = "cbBank";
             this.cbBank.Size = new System.Drawing.Size(211, 22);
             this.cbBank.TabIndex = 22;
@@ -123,7 +124,7 @@
             // 
             // txtCheckNo
             // 
-            this.txtCheckNo.Location = new System.Drawing.Point(501, 145);
+            this.txtCheckNo.Location = new System.Drawing.Point(501, 140);
             this.txtCheckNo.Name = "txtCheckNo";
             this.txtCheckNo.Size = new System.Drawing.Size(211, 22);
             this.txtCheckNo.TabIndex = 20;
@@ -131,7 +132,7 @@
             // label13
             // 
             this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(427, 148);
+            this.label13.Location = new System.Drawing.Point(427, 143);
             this.label13.Name = "label13";
             this.label13.Size = new System.Drawing.Size(59, 14);
             this.label13.TabIndex = 19;
@@ -139,7 +140,7 @@
             // 
             // txtBranchNo
             // 
-            this.txtBranchNo.Location = new System.Drawing.Point(501, 118);
+            this.txtBranchNo.Location = new System.Drawing.Point(501, 113);
             this.txtBranchNo.Name = "txtBranchNo";
             this.txtBranchNo.ReadOnly = true;
             this.txtBranchNo.Size = new System.Drawing.Size(211, 22);
@@ -148,7 +149,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(427, 121);
+            this.label12.Location = new System.Drawing.Point(427, 116);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(44, 14);
             this.label12.TabIndex = 17;
@@ -156,7 +157,7 @@
             // 
             // txtAccountNo
             // 
-            this.txtAccountNo.Location = new System.Drawing.Point(501, 90);
+            this.txtAccountNo.Location = new System.Drawing.Point(501, 85);
             this.txtAccountNo.Name = "txtAccountNo";
             this.txtAccountNo.ReadOnly = true;
             this.txtAccountNo.Size = new System.Drawing.Size(211, 22);
@@ -165,7 +166,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(427, 93);
+            this.label11.Location = new System.Drawing.Point(427, 88);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(70, 14);
             this.label11.TabIndex = 15;
@@ -174,7 +175,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(427, 65);
+            this.label10.Location = new System.Drawing.Point(427, 60);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(34, 14);
             this.label10.TabIndex = 13;
@@ -290,7 +291,7 @@
             // 
             // btnAllLocation
             // 
-            this.btnAllLocation.Location = new System.Drawing.Point(847, 42);
+            this.btnAllLocation.Location = new System.Drawing.Point(911, 42);
             this.btnAllLocation.Name = "btnAllLocation";
             this.btnAllLocation.Size = new System.Drawing.Size(81, 25);
             this.btnAllLocation.TabIndex = 18;
@@ -300,7 +301,7 @@
             // 
             // btnAddLocation
             // 
-            this.btnAddLocation.Location = new System.Drawing.Point(765, 42);
+            this.btnAddLocation.Location = new System.Drawing.Point(829, 42);
             this.btnAddLocation.Name = "btnAddLocation";
             this.btnAddLocation.Size = new System.Drawing.Size(81, 25);
             this.btnAddLocation.TabIndex = 16;
@@ -311,7 +312,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(569, 25);
+            this.label7.Location = new System.Drawing.Point(610, 25);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(52, 14);
             this.label7.TabIndex = 15;
@@ -330,9 +331,9 @@
             // 
             this.cbLocation.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbLocation.FormattingEnabled = true;
-            this.cbLocation.Location = new System.Drawing.Point(572, 44);
+            this.cbLocation.Location = new System.Drawing.Point(613, 44);
             this.cbLocation.Name = "cbLocation";
-            this.cbLocation.Size = new System.Drawing.Size(187, 22);
+            this.cbLocation.Size = new System.Drawing.Size(210, 22);
             this.cbLocation.TabIndex = 14;
             // 
             // label6
@@ -350,12 +351,12 @@
             this.cbAccountTitle.FormattingEnabled = true;
             this.cbAccountTitle.Location = new System.Drawing.Point(244, 44);
             this.cbAccountTitle.Name = "cbAccountTitle";
-            this.cbAccountTitle.Size = new System.Drawing.Size(220, 22);
+            this.cbAccountTitle.Size = new System.Drawing.Size(253, 22);
             this.cbAccountTitle.TabIndex = 9;
             // 
             // btnAddTitle
             // 
-            this.btnAddTitle.Location = new System.Drawing.Point(466, 43);
+            this.btnAddTitle.Location = new System.Drawing.Point(503, 43);
             this.btnAddTitle.Name = "btnAddTitle";
             this.btnAddTitle.Size = new System.Drawing.Size(81, 25);
             this.btnAddTitle.TabIndex = 1;
@@ -371,6 +372,16 @@
             this.dgvAcctLoc.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.Format = "C2";
+            dataGridViewCellStyle2.NullValue = "0";
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvAcctLoc.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvAcctLoc.Location = new System.Drawing.Point(244, 73);
             this.dgvAcctLoc.Name = "dgvAcctLoc";
             this.dgvAcctLoc.RowHeadersVisible = false;
@@ -476,7 +487,7 @@
             this.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "Home";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MHCI Check Voucher - Adrian Jaspio";
+            this.Text = "MHCI Check Voucher © 2021 by Adrian Jaspio";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtYear)).EndInit();

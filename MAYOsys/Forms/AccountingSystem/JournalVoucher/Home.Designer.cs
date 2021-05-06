@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.txtYear = new System.Windows.Forms.NumericUpDown();
             this.label9 = new System.Windows.Forms.Label();
             this.cbMonth = new System.Windows.Forms.ComboBox();
@@ -51,14 +53,10 @@
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.txtParticular = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.cbPayee = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.dtpLDate = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tsProgressBar = new System.Windows.Forms.ToolStripProgressBar();
-            this.label1 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtYear)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -77,8 +75,6 @@
             this.groupBox1.Controls.Add(this.groupBox2);
             this.groupBox1.Controls.Add(this.txtParticular);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.cbPayee);
-            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.dtpLDate);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(12, 13);
@@ -88,16 +84,34 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Accounting System";
             // 
+            // comboBox1
+            // 
+            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(105, 36);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(150, 22);
+            this.comboBox1.TabIndex = 24;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(16, 40);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(48, 14);
+            this.label1.TabIndex = 23;
+            this.label1.Text = "Cheque";
+            // 
             // txtYear
             // 
-            this.txtYear.Location = new System.Drawing.Point(635, 41);
+            this.txtYear.Location = new System.Drawing.Point(307, 64);
             this.txtYear.Maximum = new decimal(new int[] {
             9999999,
             0,
             0,
             0});
             this.txtYear.Name = "txtYear";
-            this.txtYear.Size = new System.Drawing.Size(77, 22);
+            this.txtYear.Size = new System.Drawing.Size(92, 22);
             this.txtYear.TabIndex = 12;
             this.txtYear.Value = new decimal(new int[] {
             2021,
@@ -108,7 +122,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(600, 45);
+            this.label9.Location = new System.Drawing.Point(268, 68);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(30, 14);
             this.label9.TabIndex = 11;
@@ -131,15 +145,15 @@
             "October",
             "November",
             "December"});
-            this.cbMonth.Location = new System.Drawing.Point(470, 41);
+            this.cbMonth.Location = new System.Drawing.Point(105, 64);
             this.cbMonth.Name = "cbMonth";
-            this.cbMonth.Size = new System.Drawing.Size(121, 22);
+            this.cbMonth.Size = new System.Drawing.Size(150, 22);
             this.cbMonth.TabIndex = 10;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(427, 45);
+            this.label8.Location = new System.Drawing.Point(16, 68);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(42, 14);
             this.label8.TabIndex = 9;
@@ -304,7 +318,7 @@
             // 
             // txtParticular
             // 
-            this.txtParticular.Location = new System.Drawing.Point(105, 102);
+            this.txtParticular.Location = new System.Drawing.Point(105, 93);
             this.txtParticular.Multiline = true;
             this.txtParticular.Name = "txtParticular";
             this.txtParticular.Size = new System.Drawing.Size(294, 130);
@@ -313,43 +327,25 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(16, 106);
+            this.label4.Location = new System.Drawing.Point(16, 97);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(58, 14);
             this.label4.TabIndex = 6;
             this.label4.Text = "Particular";
             // 
-            // cbPayee
-            // 
-            this.cbPayee.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbPayee.FormattingEnabled = true;
-            this.cbPayee.Location = new System.Drawing.Point(105, 73);
-            this.cbPayee.Name = "cbPayee";
-            this.cbPayee.Size = new System.Drawing.Size(294, 22);
-            this.cbPayee.TabIndex = 5;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(16, 78);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(39, 14);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Payee";
-            // 
             // dtpLDate
             // 
             this.dtpLDate.CustomFormat = "MMM dd, yyyy";
             this.dtpLDate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtpLDate.Location = new System.Drawing.Point(279, 45);
+            this.dtpLDate.Location = new System.Drawing.Point(307, 36);
             this.dtpLDate.Name = "dtpLDate";
-            this.dtpLDate.Size = new System.Drawing.Size(120, 22);
+            this.dtpLDate.Size = new System.Drawing.Size(92, 22);
             this.dtpLDate.TabIndex = 3;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(276, 28);
+            this.label2.Location = new System.Drawing.Point(268, 40);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(33, 14);
             this.label2.TabIndex = 2;
@@ -373,24 +369,6 @@
             this.tsProgressBar.Size = new System.Drawing.Size(350, 16);
             this.tsProgressBar.Step = 1;
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(102, 28);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(48, 14);
-            this.label1.TabIndex = 23;
-            this.label1.Text = "Cheque";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(105, 45);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(168, 22);
-            this.comboBox1.TabIndex = 24;
-            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
@@ -402,7 +380,7 @@
             this.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "Home";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MHCI Journal Voucher - Adrian Jaspio";
+            this.Text = "MHCI Journal Voucher © 2021 by Adrian Jaspio";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtYear)).EndInit();
@@ -421,10 +399,8 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DateTimePicker dtpLDate;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtParticular;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox cbPayee;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ComboBox cbAccountTitle;
         private System.Windows.Forms.Button btnAddTitle;
