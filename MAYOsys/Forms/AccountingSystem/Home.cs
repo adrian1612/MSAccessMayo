@@ -28,6 +28,7 @@ namespace MAYOsys.Forms.AccountingSystem
         {
             InitializeComponent();
             LoadFieldInitialize();
+            cbMonth.SelectedIndex = 0;
             CheckForIllegalCrossThreadCalls = false;
             BindDetail();
         }
@@ -118,6 +119,11 @@ namespace MAYOsys.Forms.AccountingSystem
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            if (cv.Detail().Rows.Count <= 0 || string.IsNullOrEmpty(txtParticular.Text))
+            {
+                MessageBox.Show("Problem Occur\n\n1) You haven't added any Location and Account Title value yet\n2) Particular field is empty!", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
             int LastLedgerID = 0;
             mys.Query("select max(id) from tbl_ledger").ForEach(r =>
             {
