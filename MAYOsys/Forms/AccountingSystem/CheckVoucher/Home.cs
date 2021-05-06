@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -27,16 +28,17 @@ namespace MAYOsys.Forms.AccountingSystem
         {
             InitializeComponent();
             LoadFieldInitialize();
+            cbMonth.SelectedIndex = 0;
             CheckForIllegalCrossThreadCalls = false;
             BindDetail();
         }
 
         void LoadFieldInitialize()
         {
-            tblAccountTitle = s.Table("select AccountTitle from tblChartOfAccounts where accounttitle <> ''");
-            tblLocation = s.Table("select Location from tblLocation");
-            tblPayee = s.Table("select Payee from tblpayee");
-            tblBank = mys.Table("select [Bank] + ' | ' + [AccountNo] AS Display,* from tbl_Bank");
+            tblAccountTitle = s.Table("select AccountTitle from tblChartOfAccounts where accounttitle <> '' order by accounttitle asc");
+            tblLocation = s.Table("select Location from tblLocation order by location asc");
+            tblPayee = s.Table("select Payee from tblpayee order by payee asc");
+            tblBank = mys.Table("select [Bank] + ' | ' + [AccountNo] AS Display,* from tbl_Bank order by Bank asc");
             LoadField();
             BindBankDetail();
         }
@@ -117,9 +119,20 @@ namespace MAYOsys.Forms.AccountingSystem
 
         private void button1_Click_1(object sender, EventArgs e)
         {
+            if (cv.Detail().Rows.Count <= 0 || string.IsNullOrEmpty(txtParticular.Text))
+            {
+                MessageBox.Show("Problem Occur\n\n1) You haven't added any Location and Account Title value yet\n2) Particular field is empty!", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
+            int LastLedgerID = 0;
+            mys.Query("select max(id) from tbl_ledger").ForEach(r =>
+            {
+                LastLedgerID = r[0] == DBNull.Value ? 1 : (int)r[0] + 1;
+            });
             var LID =  mys.Insert("tbl_Ledger", p =>
             {
-                p.Add("SalesNo", txtCVNo.Text);
+                var cvFormat = Convert.ToDateTime(dtpLDate.Text);
+                p.Add("SalesNo", $"{cvFormat:yy}{cvFormat:MM}{LastLedgerID}");
                 p.Add("LDate", DateTime.Parse(dtpLDate.Text));
                 p.Add("Month", cbMonth.Text);
                 p.Add("Year", txtYear.Value);

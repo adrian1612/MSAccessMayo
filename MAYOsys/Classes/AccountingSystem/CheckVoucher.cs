@@ -60,7 +60,7 @@ namespace MAYOsys.Classes.AccountingSystem
 
                                 locationJO.ForEach(lj =>
                                 {
-                                    if (c.ToString() == lj.Location)
+                                    if (lj.Location == c.ToString())
                                     {
                                         s.Insert("tbl_LocationJO", p =>
                                         {

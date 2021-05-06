@@ -19,6 +19,7 @@ namespace MAYOsys.Forms.AccountingSystem
         public JobOrderAssignment()
         {
             InitializeComponent();
+            cbLocation.SelectedIndex = 0;
         }
 
         private DataTable table = new DataTable();
