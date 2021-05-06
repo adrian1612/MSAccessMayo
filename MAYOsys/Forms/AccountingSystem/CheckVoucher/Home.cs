@@ -32,18 +32,15 @@ namespace MAYOsys.Forms.AccountingSystem
 
         public Home()
         {
-            trigger();
             InitializeComponent();
+            CheckForIllegalCrossThreadCalls = false;
         }
 
         private void Home_Load_1(object sender, EventArgs e)
         {
-            trigger();
             LoadFieldInitialize();
-            trigger();
             cbMonth.SelectedIndex = 0;
             CheckForIllegalCrossThreadCalls = false;
-            trigger();
             BindDetail();
         }
 
@@ -59,7 +56,6 @@ namespace MAYOsys.Forms.AccountingSystem
             tblBank = s.Table("qryDisplayBankInfo", null, CommandType.StoredProcedure);
             trigger();
             LoadField();
-            trigger();
             BindBankDetail();
         }
 

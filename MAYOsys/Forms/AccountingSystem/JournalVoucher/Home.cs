@@ -54,15 +54,12 @@ namespace MAYOsys.Forms.AccountingSystem.JournalVoucher
 
         void LoadField()
         {
-            trigger();
             cbAccountTitle.DataSource = tblAccountTitle;
             cbAccountTitle.DisplayMember = "AccountTitle";
             cbAccountTitle.ValueMember = "AccountTitle";
-            trigger();
             cbLocation.DataSource = tblLocation;
             cbLocation.ValueMember = "Location";
             cbLocation.DisplayMember = "Location";
-            trigger();
             cbcheckno.DataSource = tblCVCheckNo;
             cbcheckno.ValueMember = "CheckNo";
             cbcheckno.DisplayMember = "CheckNo";

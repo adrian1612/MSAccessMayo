@@ -15,17 +15,18 @@ namespace MAYOsys
         public Main()
         {
             InitializeComponent();
+            CheckForIllegalCrossThreadCalls = false;
         }
 
         void SetPMax(int value)
         {
             tsProgressbar.Value = 0;
-            tsProgressbar.Maximum = value;
+            tsProgressbar.Maximum = value * 10;
         }
 
         private void checkVoucherToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            SetPMax(9);
+            SetPMax(4);
             var cv = new Forms.AccountingSystem.Home();
             cv.ProgressBarStep += Cv_ProgressBarStep1;
             cv.MdiParent = this;
@@ -40,11 +41,13 @@ namespace MAYOsys
 
         private void journalVoucherToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SetPMax(8);
+            SetPMax(5);
             var jv = new Forms.AccountingSystem.JournalVoucher.Home();
             jv.ProgressBarStep += Cv_ProgressBarStep1;
             jv.MdiParent = this;
             jv.Show();
         }
+
+
     }
 }

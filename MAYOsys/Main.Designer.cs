@@ -94,7 +94,6 @@
             // 
             this.tsProgressbar.Name = "tsProgressbar";
             this.tsProgressbar.Size = new System.Drawing.Size(200, 16);
-            this.tsProgressbar.Step = 1;
             // 
             // Main
             // 
