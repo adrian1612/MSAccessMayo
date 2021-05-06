@@ -25,17 +25,11 @@ namespace MAYOsys.Forms.AccountingSystem
 
         public Home()
         {
-            s.ErrorOccured += Mys_ErrorOccured;
             InitializeComponent();
             LoadFieldInitialize();
             cbMonth.SelectedIndex = 0;
             CheckForIllegalCrossThreadCalls = false;
             BindDetail();
-        }
-
-        private void Mys_ErrorOccured(AAJdbController.ErrorMessage e)
-        {
-            MessageBox.Show(e.ExceptionMessage);
         }
 
         void LoadFieldInitialize()
