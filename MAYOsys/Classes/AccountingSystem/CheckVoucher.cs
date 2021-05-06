@@ -57,18 +57,6 @@ namespace MAYOsys.Classes.AccountingSystem
                                     p.Add("LID", LedgerID);
                                     p.Add("Location", c.ToString());
                                 }, true);
-
-                                locationJO.ForEach(lj =>
-                                {
-                                    if (c.ToString() == lj.Location)
-                                    {
-                                        s.Insert("tbl_LocationJO", p =>
-                                        {
-                                            p.Add("JOID", lj.JOID);
-                                            p.Add("LLID", LLID);
-                                        });
-                                    }
-                                });
                             }
                             tempLoc = c.ToString();
                             if (c.ToString() == "Credit")
@@ -98,7 +86,14 @@ namespace MAYOsys.Classes.AccountingSystem
                 }
             }
 
-            
+            locationJO.ForEach(lj =>
+            {
+                s.Insert("tbl_LocationJO", p =>
+                {
+                    p.Add("JOID", lj.JOID);
+                    p.Add("LLID", lj.LLID);
+                });
+            });
         }
 
         public DataTable Detail()
