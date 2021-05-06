@@ -50,6 +50,9 @@ namespace MAYOsys
             tsProgressbar.Value = 0;
         }
 
-
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Developer : Adrian A. Jaspio\nPosition : Computer Programmer\nCompany : Mayo Holdings Constraction Company Inc.\n\n© 2021", "About", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
     }
 }
