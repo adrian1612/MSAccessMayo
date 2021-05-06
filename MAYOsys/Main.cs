@@ -31,6 +31,7 @@ namespace MAYOsys
             cv.ProgressBarStep += Cv_ProgressBarStep1;
             cv.MdiParent = this;
             cv.Show();
+            tsProgressbar.Value = 0;
         }
 
         private void Cv_ProgressBarStep1()
@@ -46,6 +47,7 @@ namespace MAYOsys
             jv.ProgressBarStep += Cv_ProgressBarStep1;
             jv.MdiParent = this;
             jv.Show();
+            tsProgressbar.Value = 0;
         }
 
 
