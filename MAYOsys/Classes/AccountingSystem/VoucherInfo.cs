@@ -13,6 +13,7 @@ namespace MAYOsys.Classes.AccountingSystem
         public int TotalLocationJO { get; set; }
         public decimal TotalCredit { get; set; }
         public decimal Balance { get { return TotalDebit - TotalCredit; } }
+        public int TotalInsert { get; set; }
         public VoucherInfo()
         {
 

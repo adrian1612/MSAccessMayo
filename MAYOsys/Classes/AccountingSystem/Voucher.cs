@@ -10,6 +10,8 @@ namespace MAYOsys.Classes.AccountingSystem
 {
     class Voucher
     {
+        public event EventHandler TriggerDetailInsert;
+
         DataTable dt = new DataTable();
         dbcontrol s = new dbcontrol();
         public Voucher()
@@ -45,7 +47,7 @@ namespace MAYOsys.Classes.AccountingSystem
         }
 
 
-
+        int countInsert;
         public VoucherInfo Info(List<LocationJO> locationJO)
         {
             var info = new VoucherInfo();
@@ -55,7 +57,6 @@ namespace MAYOsys.Classes.AccountingSystem
             }
             foreach (DataColumn c in dt.Columns)
             {
-                
                 if (c.ToString() != "AccountTitle")
                 {
                     string tempLoc = "";
@@ -65,10 +66,12 @@ namespace MAYOsys.Classes.AccountingSystem
                         {
                             if (tempLoc != c.ToString())
                             {
+                                countInsert++;
                                 locationJO.ForEach(lj =>
                                 {
                                     if (lj.Location == c.ToString())
                                     {
+                                        countInsert++;
                                         info.TotalLocationJO++;
                                     }
                                 });
@@ -76,19 +79,26 @@ namespace MAYOsys.Classes.AccountingSystem
                             tempLoc = c.ToString();
                             if (c.ToString() == "Credit")
                             {
+                                countInsert++;
                                 info.TotalCredit += (decimal)r[c];
                             }
                             else
                             {
+                                countInsert++;
                                 info.TotalDebit += (decimal)r[c];
                             }
                         }
                     }
                 }
             }
+            info.TotalInsert = countInsert;
             return info;
         }
         
+        void triggerEvent()
+        {
+            TriggerDetailInsert?.Invoke(this, EventArgs.Empty);
+        }
 
 
         public void InsertCheckDetail(int LedgerID, List<LocationJO> locationJO)
@@ -105,6 +115,7 @@ namespace MAYOsys.Classes.AccountingSystem
                         {
                             if (tempLoc != c.ToString())
                             {
+                                triggerEvent();
                                 LLID = s.Insert("tbl_ckLedgerLocation", p =>
                                 {
                                     p.Add("LID", LedgerID);
@@ -115,6 +126,7 @@ namespace MAYOsys.Classes.AccountingSystem
                                 {
                                     if (lj.Location == c.ToString())
                                     {
+                                        triggerEvent();
                                         s.Insert("tbl_ckLocationJO", p =>
                                         {
                                             p.Add("JOID", lj.JOID);
@@ -126,6 +138,7 @@ namespace MAYOsys.Classes.AccountingSystem
                             tempLoc = c.ToString();
                             if (c.ToString() == "Credit")
                             {
+                                triggerEvent();
                                 s.Insert("tbl_ckAccountTitle", p =>
                                 {
                                     p.Add("LLID", LLID);
@@ -137,6 +150,7 @@ namespace MAYOsys.Classes.AccountingSystem
                             }
                             else
                             {
+                                triggerEvent();
                                 s.Insert("tbl_ckAccountTitle", p =>
                                 {
                                     p.Add("LLID", LLID);

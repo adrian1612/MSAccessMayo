@@ -33,9 +33,12 @@ namespace MAYOsys.Forms.AccountingSystem
         public Home()
         {
             InitializeComponent();
+            cv.TriggerDetailInsert += Cv_TriggerDetailInsert;
+            
             CheckForIllegalCrossThreadCalls = false;
         }
 
+        
         private void Home_Load_1(object sender, EventArgs e)
         {
             LoadFieldInitialize();
@@ -132,6 +135,12 @@ namespace MAYOsys.Forms.AccountingSystem
             tsProgressBar.Value = 0;
         }
 
+        private void Cv_TriggerDetailInsert(object sender, EventArgs e)
+        {
+            tsProgressBar.PerformStep();
+        }
+
+
         private void button1_Click_1(object sender, EventArgs e)
         {
             if (cv.Detail().Rows.Count <= 0 || string.IsNullOrEmpty(txtParticular.Text) || string.IsNullOrEmpty(txtCheckNo.Text))
@@ -139,6 +148,7 @@ namespace MAYOsys.Forms.AccountingSystem
                 MessageBox.Show("Problem Occur\n\n1) You haven't added any Location and Account Title value yet\n2) Particular field is empty!\n3) Check No. is empty!", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
+            SetProgressBarMax(summary.TotalInsert);
             int LastLedgerID = 0;
             s.Query("select max(id) from tbl_ckledger").ForEach(r =>
             {
@@ -166,9 +176,9 @@ namespace MAYOsys.Forms.AccountingSystem
             txtBranchNo.DataBindings.Add("text", tblBank, "Branch");
         }
 
+        VoucherInfo summary;
         void SummaryInfo()
         {
-            VoucherInfo summary;
             summary = cv.Info(listLocationJO);
             label1.Text = $"No. of Account Title : {summary.TotalAccountTitle}\nTotal Debit : {summary.TotalDebit:c2}\nTotal Credit : {summary.TotalCredit:c2}\nBalance : {summary.Balance:c2}\nNo. of Location J.O. : {summary.TotalLocationJO}";
         }
@@ -178,6 +188,9 @@ namespace MAYOsys.Forms.AccountingSystem
             SummaryInfo();
         }
 
-       
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            MessageBox.Show(summary.TotalInsert.ToString());
+        }
     }
 }
