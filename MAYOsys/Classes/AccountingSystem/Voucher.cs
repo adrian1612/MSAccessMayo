@@ -47,10 +47,11 @@ namespace MAYOsys.Classes.AccountingSystem
         }
 
 
-        int countInsert;
+       
         public VoucherInfo Info(List<LocationJO> locationJO)
         {
             var info = new VoucherInfo();
+            int countInsert = 0;
             foreach (DataRow r in dt.Rows)
             {
                 info.TotalAccountTitle++;
@@ -182,6 +183,7 @@ namespace MAYOsys.Classes.AccountingSystem
                         {
                             if (tempLoc != c.ToString())
                             {
+                                triggerEvent();
                                 LLID = s.Insert("tbl_jvLedgerLocation", p =>
                                 {
                                     p.Add("LID", LedgerID);
@@ -192,6 +194,7 @@ namespace MAYOsys.Classes.AccountingSystem
                                 {
                                     if (lj.Location == c.ToString())
                                     {
+                                        triggerEvent();
                                         s.Insert("tbl_jvLocationJO", p =>
                                         {
                                             p.Add("JOID", lj.JOID);
@@ -203,6 +206,7 @@ namespace MAYOsys.Classes.AccountingSystem
                             tempLoc = c.ToString();
                             if (c.ToString() == "Credit")
                             {
+                                triggerEvent();
                                 s.Insert("tbl_jvAccountTitle", p =>
                                 {
                                     p.Add("LLID", LLID);
@@ -214,6 +218,7 @@ namespace MAYOsys.Classes.AccountingSystem
                             }
                             else
                             {
+                                triggerEvent();
                                 s.Insert("tbl_jvAccountTitle", p =>
                                 {
                                     p.Add("LLID", LLID);

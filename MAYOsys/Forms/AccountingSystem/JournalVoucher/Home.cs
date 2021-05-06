@@ -33,6 +33,12 @@ namespace MAYOsys.Forms.AccountingSystem.JournalVoucher
         public Home()
         {
             InitializeComponent();
+            cv.TriggerDetailInsert += Cv_TriggerDetailInsert;
+        }
+
+        private void Cv_TriggerDetailInsert(object sender, EventArgs e)
+        {
+            tsProgressBar.PerformStep();
         }
 
         void LoadFieldInitialize()
@@ -49,7 +55,7 @@ namespace MAYOsys.Forms.AccountingSystem.JournalVoucher
         void SetProgressBarMax(int Value)
         {
             tsProgressBar.Value = 0;
-            tsProgressBar.Maximum = Value;
+            tsProgressBar.Maximum = Value * 10;
         }
 
         void LoadField()
@@ -117,10 +123,9 @@ namespace MAYOsys.Forms.AccountingSystem.JournalVoucher
             tsProgressBar.Value = 0;
         }
 
-
+        VoucherInfo summary;
         void SummaryInfo()
         {
-            VoucherInfo summary;
             summary = cv.Info(listLocationJO);
             label3.Text = $"No. of Account Title : {summary.TotalAccountTitle}\nTotal Debit : {summary.TotalDebit:c2}\nTotal Credit : {summary.TotalCredit:c2}\nBalance : {summary.Balance:c2}\nNo. of Location J.O. : {summary.TotalLocationJO}";
         }
@@ -137,6 +142,7 @@ namespace MAYOsys.Forms.AccountingSystem.JournalVoucher
                 MessageBox.Show("Problem Occur\n\n1) You haven't added any Location and Account Title value yet\n2) Particular field is empty!", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
+            SetProgressBarMax(summary.TotalInsert);
             int LastLedgerID = 0;
             s.Query("select max(id) from tbl_jvledger").ForEach(r =>
             {

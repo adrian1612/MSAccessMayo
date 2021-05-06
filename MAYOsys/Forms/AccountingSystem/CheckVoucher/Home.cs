@@ -187,10 +187,5 @@ namespace MAYOsys.Forms.AccountingSystem
         {
             SummaryInfo();
         }
-
-        private void button1_Click_2(object sender, EventArgs e)
-        {
-            MessageBox.Show(summary.TotalInsert.ToString());
-        }
     }
 }
