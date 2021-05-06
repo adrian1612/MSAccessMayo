@@ -15,29 +15,34 @@ namespace MAYOsys.Forms.AccountingSystem.JournalVoucher
 {
     public partial class Home : Form
     {
-        CheckVoucher cv = new CheckVoucher();
+
+        public delegate void mytrigger();
+        public event mytrigger ProgressBarStep;
+
+        Voucher cv = new Voucher();
         dbcontrol s = new dbcontrol();
-        dbcontrol mys = new dbcontrol("provider=microsoft.ace.oledb.12.0;data source=|DataDirectory|MHCICV.mdb");
 
         DataTable tblAccountTitle;
         DataTable tblLocation;
-        DataTable tblPayee;
-        DataTable tblBank;
+        DataTable tblCVCheckNo;
 
+        void trigger()
+        {
+            ProgressBarStep?.Invoke();
+        }
         public Home()
         {
             InitializeComponent();
-            LoadFieldInitialize();
-            CheckForIllegalCrossThreadCalls = false;
-            BindDetail();
         }
 
         void LoadFieldInitialize()
         {
-            tblAccountTitle = s.Table("select AccountTitle from tblChartOfAccounts where accounttitle <> '' order by accounttitle asc");
-            tblLocation = s.Table("select Location from tblLocation order by location asc");
-            tblPayee = s.Table("select Payee from tblpayee order by payee asc");
-            tblBank = mys.Table("select [Bank] + ' | ' + [AccountNo] AS Display,* from tbl_Bank order by Bank asc");
+            trigger();
+            tblAccountTitle = s.Table("qryDisplayAccountTitle", null, CommandType.StoredProcedure);
+            trigger();
+            tblLocation = s.Table("qryDisplayLocation", null, CommandType.StoredProcedure);
+            trigger();
+            tblCVCheckNo = s.Table("qryListOfCVCheckNo", null, CommandType.StoredProcedure);
             LoadField();
         }
 
@@ -49,12 +54,18 @@ namespace MAYOsys.Forms.AccountingSystem.JournalVoucher
 
         void LoadField()
         {
+            trigger();
             cbAccountTitle.DataSource = tblAccountTitle;
             cbAccountTitle.DisplayMember = "AccountTitle";
             cbAccountTitle.ValueMember = "AccountTitle";
+            trigger();
             cbLocation.DataSource = tblLocation;
             cbLocation.ValueMember = "Location";
             cbLocation.DisplayMember = "Location";
+            trigger();
+            cbcheckno.DataSource = tblCVCheckNo;
+            cbcheckno.ValueMember = "CheckNo";
+            cbcheckno.DisplayMember = "CheckNo";
         }
 
         void BindDetail()
@@ -65,13 +76,12 @@ namespace MAYOsys.Forms.AccountingSystem.JournalVoucher
         private void button1_Click(object sender, EventArgs e)
         {
             cv.AddValueToHeader("AccountTitle", cbAccountTitle.Text);
-            BindDetail();
+            SummaryInfo();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             cv.AddLocation(cbLocation.Text);
-            BindDetail();
         }
 
         private void btnAssignLocationJO_Click(object sender, EventArgs e)
@@ -85,6 +95,7 @@ namespace MAYOsys.Forms.AccountingSystem.JournalVoucher
         private void Assign_Entry(LocationJO jo)
         {
             listLocationJO.Add(jo);
+            SummaryInfo();
             lvJOAssign.Items.Clear();
             listLocationJO.ForEach(llj =>
             {
@@ -109,14 +120,32 @@ namespace MAYOsys.Forms.AccountingSystem.JournalVoucher
             tsProgressBar.Value = 0;
         }
 
-        private void button1_Click_1(object sender, EventArgs e)
+
+        void SummaryInfo()
         {
+            VoucherInfo summary;
+            summary = cv.Info(listLocationJO);
+            label3.Text = $"No. of Account Title : {summary.TotalAccountTitle}\nTotal Debit : {summary.TotalDebit:c2}\nTotal Credit : {summary.TotalCredit:c2}\nBalance : {summary.Balance:c2}\nNo. of Location J.O. : {summary.TotalLocationJO}";
+        }
+
+        private void dgvAcctLoc_CellStateChanged(object sender, DataGridViewCellStateChangedEventArgs e)
+        {
+            SummaryInfo();
+        }
+
+        private void btnSubmit_Click(object sender, EventArgs e)
+        {
+            if (cv.Detail().Rows.Count <= 0 || string.IsNullOrEmpty(txtParticular.Text))
+            {
+                MessageBox.Show("Problem Occur\n\n1) You haven't added any Location and Account Title value yet\n2) Particular field is empty!", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return;
+            }
             int LastLedgerID = 0;
-            mys.Query("select max(id) from tbl_ledger").ForEach(r =>
+            s.Query("select max(id) from tbl_jvledger").ForEach(r =>
             {
                 LastLedgerID = r[0] == DBNull.Value ? 1 : (int)r[0] + 1;
             });
-            var LID =  mys.Insert("tbl_Ledger", p =>
+            var LID = s.Insert("tbl_jvLedger", p =>
             {
                 var cvFormat = Convert.ToDateTime(dtpLDate.Text);
                 p.Add("SalesNo", $"{cvFormat:yy}{cvFormat:MM}{LastLedgerID}");
@@ -124,9 +153,22 @@ namespace MAYOsys.Forms.AccountingSystem.JournalVoucher
                 p.Add("Month", cbMonth.Text);
                 p.Add("Year", txtYear.Value);
                 p.Add("Particular", txtParticular.Text);
-            }, true); 
-            cv.InsertDetail(LID, cv.Detail(), listLocationJO);
+                p.Add("CheckNo", cbcheckno.Text);
+            }, true);
+            cv.InsertJournalDetail(LID, listLocationJO);
             MessageBox.Show("Done");
+        }
+
+        private void Home_Load(object sender, EventArgs e)
+        {
+            trigger();
+            LoadFieldInitialize();
+            trigger();
+            cbMonth.SelectedIndex = 0;
+            trigger();
+            CheckForIllegalCrossThreadCalls = false;
+            BindDetail();
         }
     }
 }
+

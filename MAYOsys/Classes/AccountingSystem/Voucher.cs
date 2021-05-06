@@ -8,11 +8,11 @@ using System.Windows.Forms;
 
 namespace MAYOsys.Classes.AccountingSystem
 {
-    class CheckVoucher
+    class Voucher
     {
         DataTable dt = new DataTable();
         dbcontrol s = new dbcontrol();
-        public CheckVoucher()
+        public Voucher()
         {
             var pri = new DataColumn("AccountTitle");
             dt.Columns.Add(pri);
@@ -46,7 +46,7 @@ namespace MAYOsys.Classes.AccountingSystem
 
 
 
-        public VoucherInfo Info(DataTable dt, List<LocationJO> locationJO)
+        public VoucherInfo Info(List<LocationJO> locationJO)
         {
             var info = new VoucherInfo();
             foreach (DataRow r in dt.Rows)
@@ -91,7 +91,7 @@ namespace MAYOsys.Classes.AccountingSystem
         
 
 
-        public void InsertDetail(int LedgerID, DataTable dt, List<LocationJO> locationJO)
+        public void InsertCheckDetail(int LedgerID, List<LocationJO> locationJO)
         {
             foreach (DataColumn c in dt.Columns)
             {
@@ -154,27 +154,73 @@ namespace MAYOsys.Classes.AccountingSystem
             
         }
 
+        public void InsertJournalDetail(int LedgerID, List<LocationJO> locationJO)
+        {
+            foreach (DataColumn c in dt.Columns)
+            {
+                if (c.ToString() != "AccountTitle")
+                {
+                    string tempLoc = "";
+                    int LLID = 0;
+                    foreach (DataRow r in dt.Rows)
+                    {
+                        if (r[c] != DBNull.Value)
+                        {
+                            if (tempLoc != c.ToString())
+                            {
+                                LLID = s.Insert("tbl_jvLedgerLocation", p =>
+                                {
+                                    p.Add("LID", LedgerID);
+                                    p.Add("Location", c.ToString());
+                                }, true);
+
+                                locationJO.ForEach(lj =>
+                                {
+                                    if (lj.Location == c.ToString())
+                                    {
+                                        s.Insert("tbl_jvLocationJO", p =>
+                                        {
+                                            p.Add("JOID", lj.JOID);
+                                            p.Add("LLID", LLID);
+                                        });
+                                    }
+                                });
+                            }
+                            tempLoc = c.ToString();
+                            if (c.ToString() == "Credit")
+                            {
+                                s.Insert("tbl_jvAccountTitle", p =>
+                                {
+                                    p.Add("LLID", LLID);
+                                    p.Add("LID", LedgerID);
+                                    p.Add("AccountTitle", r["AccountTitle"]);
+                                    p.Add("Debit", 0);
+                                    p.Add("Credit", (decimal)r[c]);
+                                });
+                            }
+                            else
+                            {
+                                s.Insert("tbl_jvAccountTitle", p =>
+                                {
+                                    p.Add("LLID", LLID);
+                                    p.Add("LID", LedgerID);
+                                    p.Add("AccountTitle", r["AccountTitle"]);
+                                    p.Add("Debit", (decimal)r[c]);
+                                    p.Add("Credit", 0);
+                                });
+                            }
+                        }
+                    }
+                }
+            }
+
+
+        }
+
         public DataTable Detail()
         {
             return dt;
         }
     }
-    class VoucherInfo
-    {
-        public int TotalAccountTitle    { get; set; }
-        public decimal TotalDebit        { get; set; }
-        public int TotalLocationJO      { get; set; }
-        public decimal TotalCredit { get; set; }
-        public decimal Balance { get { return TotalDebit - TotalCredit; } }
-        public VoucherInfo()
-        {
 
-        }
-        public VoucherInfo(int TotalAccountTitle, decimal TotalDebit, int TotalLocationJO)
-        {
-            this.TotalAccountTitle  =TotalAccountTitle ;
-            this.TotalDebit = TotalDebit;
-            this.TotalLocationJO = TotalLocationJO;
-        }
-    }
 }

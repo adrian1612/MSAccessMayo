@@ -15,30 +15,51 @@ namespace MAYOsys.Forms.AccountingSystem
 {
     public partial class Home : Form
     {
-        CheckVoucher cv = new CheckVoucher();
+        public delegate void mytrigger();
+        public event mytrigger ProgressBarStep;
+
+        Voucher cv = new Voucher();
         dbcontrol s = new dbcontrol();
 
         DataTable tblAccountTitle;
         DataTable tblLocation;
         DataTable tblPayee;
         DataTable tblBank;
+        void trigger()
+        {
+            ProgressBarStep?.Invoke();
+        }
 
         public Home()
         {
+            trigger();
             InitializeComponent();
+        }
+
+        private void Home_Load_1(object sender, EventArgs e)
+        {
+            trigger();
             LoadFieldInitialize();
+            trigger();
             cbMonth.SelectedIndex = 0;
             CheckForIllegalCrossThreadCalls = false;
+            trigger();
             BindDetail();
         }
 
         void LoadFieldInitialize()
         {
+            trigger();
             tblAccountTitle = s.Table("qryDisplayAccountTitle", null, CommandType.StoredProcedure);
+            trigger();
             tblLocation = s.Table("qryDisplayLocation", null, CommandType.StoredProcedure);
+            trigger();
             tblPayee = s.Table("qryDisplayPayee", null, CommandType.StoredProcedure);
+            trigger();
             tblBank = s.Table("qryDisplayBankInfo", null, CommandType.StoredProcedure);
+            trigger();
             LoadField();
+            trigger();
             BindBankDetail();
         }
 
@@ -117,9 +138,9 @@ namespace MAYOsys.Forms.AccountingSystem
 
         private void button1_Click_1(object sender, EventArgs e)
         {
-            if (cv.Detail().Rows.Count <= 0 || string.IsNullOrEmpty(txtParticular.Text))
+            if (cv.Detail().Rows.Count <= 0 || string.IsNullOrEmpty(txtParticular.Text) || string.IsNullOrEmpty(txtCheckNo.Text))
             {
-                MessageBox.Show("Problem Occur\n\n1) You haven't added any Location and Account Title value yet\n2) Particular field is empty!", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Problem Occur\n\n1) You haven't added any Location and Account Title value yet\n2) Particular field is empty!\n3) Check No. is empty!", "Invalid", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 return;
             }
             int LastLedgerID = 0;
@@ -137,8 +158,9 @@ namespace MAYOsys.Forms.AccountingSystem
                 p.Add("Payee", cbPayee.Text);
                 p.Add("Particular", txtParticular.Text);
                 p.Add("Bank", cbBank.SelectedValue.ToString());
+                p.Add("CheckNo", txtCheckNo.Text);
             }, true); 
-            cv.InsertDetail(LID, cv.Detail(), listLocationJO);
+            cv.InsertCheckDetail(LID, listLocationJO);
             MessageBox.Show("Done");
         }
 
@@ -151,7 +173,7 @@ namespace MAYOsys.Forms.AccountingSystem
         void SummaryInfo()
         {
             VoucherInfo summary;
-            summary = cv.Info(cv.Detail(), listLocationJO);
+            summary = cv.Info(listLocationJO);
             label1.Text = $"No. of Account Title : {summary.TotalAccountTitle}\nTotal Debit : {summary.TotalDebit:c2}\nTotal Credit : {summary.TotalCredit:c2}\nBalance : {summary.Balance:c2}\nNo. of Location J.O. : {summary.TotalLocationJO}";
         }
 
@@ -159,5 +181,7 @@ namespace MAYOsys.Forms.AccountingSystem
         {
             SummaryInfo();
         }
+
+       
     }
 }

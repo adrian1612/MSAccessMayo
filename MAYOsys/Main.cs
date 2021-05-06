@@ -16,5 +16,35 @@ namespace MAYOsys
         {
             InitializeComponent();
         }
+
+        void SetPMax(int value)
+        {
+            tsProgressbar.Value = 0;
+            tsProgressbar.Maximum = value;
+        }
+
+        private void checkVoucherToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            SetPMax(9);
+            var cv = new Forms.AccountingSystem.Home();
+            cv.ProgressBarStep += Cv_ProgressBarStep1;
+            cv.MdiParent = this;
+            cv.Show();
+        }
+
+        private void Cv_ProgressBarStep1()
+        {
+            tsProgressbar.PerformStep();
+        }
+
+
+        private void journalVoucherToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            SetPMax(8);
+            var jv = new Forms.AccountingSystem.JournalVoucher.Home();
+            jv.ProgressBarStep += Cv_ProgressBarStep1;
+            jv.MdiParent = this;
+            jv.Show();
+        }
     }
 }
