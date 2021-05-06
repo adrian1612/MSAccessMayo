@@ -44,6 +44,53 @@ namespace MAYOsys.Classes.AccountingSystem
             }
         }
 
+
+
+        public VoucherInfo Info(DataTable dt, List<LocationJO> locationJO)
+        {
+            var info = new VoucherInfo();
+            foreach (DataRow r in dt.Rows)
+            {
+                info.TotalAccountTitle++;
+            }
+            foreach (DataColumn c in dt.Columns)
+            {
+                
+                if (c.ToString() != "AccountTitle")
+                {
+                    string tempLoc = "";
+                    foreach (DataRow r in dt.Rows)
+                    {
+                        if (r[c] != DBNull.Value)
+                        {
+                            if (tempLoc != c.ToString())
+                            {
+                                locationJO.ForEach(lj =>
+                                {
+                                    if (lj.Location == c.ToString())
+                                    {
+                                        info.TotalLocationJO++;
+                                    }
+                                });
+                            }
+                            tempLoc = c.ToString();
+                            if (c.ToString() == "Credit")
+                            {
+                                info.TotalCredit += (decimal)r[c];
+                            }
+                            else
+                            {
+                                info.TotalDebit += (decimal)r[c];
+                            }
+                        }
+                    }
+                }
+            }
+            return info;
+        }
+        
+
+
         public void InsertDetail(int LedgerID, DataTable dt, List<LocationJO> locationJO)
         {
             foreach (DataColumn c in dt.Columns)
@@ -110,6 +157,24 @@ namespace MAYOsys.Classes.AccountingSystem
         public DataTable Detail()
         {
             return dt;
+        }
+    }
+    class VoucherInfo
+    {
+        public int TotalAccountTitle    { get; set; }
+        public decimal TotalDebit        { get; set; }
+        public int TotalLocationJO      { get; set; }
+        public decimal TotalCredit { get; set; }
+        public decimal Balance { get { return TotalDebit - TotalCredit; } }
+        public VoucherInfo()
+        {
+
+        }
+        public VoucherInfo(int TotalAccountTitle, decimal TotalDebit, int TotalLocationJO)
+        {
+            this.TotalAccountTitle  =TotalAccountTitle ;
+            this.TotalDebit = TotalDebit;
+            this.TotalLocationJO = TotalLocationJO;
         }
     }
 }

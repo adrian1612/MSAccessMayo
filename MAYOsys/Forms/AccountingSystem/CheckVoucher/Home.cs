@@ -25,7 +25,7 @@ namespace MAYOsys.Forms.AccountingSystem
 
         public Home()
         {
-           s.ErrorOccured += Mys_ErrorOccured;
+            s.ErrorOccured += Mys_ErrorOccured;
             InitializeComponent();
             LoadFieldInitialize();
             cbMonth.SelectedIndex = 0;
@@ -58,9 +58,9 @@ namespace MAYOsys.Forms.AccountingSystem
         {
             var listtable = new List<DataTable> { tblAccountTitle, tblLocation, tblPayee, tblBank };
             var listCB = new List<ComboBox> { cbAccountTitle, cbLocation, cbPayee, cbBank };
-            var liststrd = new Dictionary<string, string> { { "AccountTitle", "AccountTitle" }, { "Location", "Location" }, { "Payee", "Payee" }, { "Display", "AccountNo" } };
+            var liststr = new Dictionary<string, string> { { "AccountTitle", "AccountTitle" }, { "Location", "Location" }, { "Payee", "Payee" }, { "Display", "AccountNo" } };
             int i = 0;
-            foreach (KeyValuePair<string, string> str in liststrd)
+            foreach (KeyValuePair<string, string> str in liststr)
             {
                 listCB[i].DataSource = listtable[i];
                 listCB[i].ValueMember = str.Value;
@@ -77,6 +77,7 @@ namespace MAYOsys.Forms.AccountingSystem
         private void button1_Click(object sender, EventArgs e)
         {
             cv.AddValueToHeader("AccountTitle", cbAccountTitle.Text);
+            SummaryInfo();
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -95,6 +96,7 @@ namespace MAYOsys.Forms.AccountingSystem
         private void Assign_Entry(LocationJO jo)
         {
             listLocationJO.Add(jo);
+            SummaryInfo();
             lvJOAssign.Items.Clear();
             listLocationJO.ForEach(llj =>
             {
@@ -150,6 +152,18 @@ namespace MAYOsys.Forms.AccountingSystem
         {
             txtAccountNo.DataBindings.Add("text", tblBank, "AccountNo");
             txtBranchNo.DataBindings.Add("text", tblBank, "Branch");
+        }
+
+        void SummaryInfo()
+        {
+            VoucherInfo summary;
+            summary = cv.Info(cv.Detail(), listLocationJO);
+            label1.Text = $"No. of Account Title : {summary.TotalAccountTitle}\nTotal Debit : {summary.TotalDebit:c2}\nTotal Credit : {summary.TotalCredit:c2}\nBalance : {summary.Balance:c2}\nNo. of Location J.O. : {summary.TotalLocationJO}";
+        }
+
+        private void dgvAcctLoc_CellStateChanged(object sender, DataGridViewCellStateChangedEventArgs e)
+        {
+            SummaryInfo();
         }
     }
 }
