@@ -18,6 +18,12 @@ namespace MAYOsys.Classes.AccountingSystem
             dt.Columns.Add(pri);
             dt.Columns.Add(new DataColumn("Credit", typeof(decimal)));
             dt.PrimaryKey = new DataColumn[] { pri };
+            s.ErrorOccured += S_ErrorOccured;
+        }
+
+        private void S_ErrorOccured(AAJdbController.ErrorMessage e)
+        {
+            MessageBox.Show(e.ExceptionMessage);
         }
 
         public void AddLocation(string Header)
@@ -52,7 +58,7 @@ namespace MAYOsys.Classes.AccountingSystem
                         {
                             if (tempLoc != c.ToString())
                             {
-                                LLID = s.Insert("tbl_LedgerLocation", p =>
+                                LLID = s.Insert("tbl_ckLedgerLocation", p =>
                                 {
                                     p.Add("LID", LedgerID);
                                     p.Add("Location", c.ToString());
@@ -62,7 +68,7 @@ namespace MAYOsys.Classes.AccountingSystem
                                 {
                                     if (lj.Location == c.ToString())
                                     {
-                                        s.Insert("tbl_LocationJO", p =>
+                                        s.Insert("tbl_ckLocationJO", p =>
                                         {
                                             p.Add("JOID", lj.JOID);
                                             p.Add("LLID", LLID);
@@ -73,7 +79,7 @@ namespace MAYOsys.Classes.AccountingSystem
                             tempLoc = c.ToString();
                             if (c.ToString() == "Credit")
                             {
-                                s.Insert("tbl_AccountTitle", p =>
+                                s.Insert("tbl_ckAccountTitle", p =>
                                 {
                                     p.Add("LLID", LLID);
                                     p.Add("LID", LedgerID);
@@ -84,7 +90,7 @@ namespace MAYOsys.Classes.AccountingSystem
                             }
                             else
                             {
-                                s.Insert("tbl_AccountTitle", p =>
+                                s.Insert("tbl_ckAccountTitle", p =>
                                 {
                                     p.Add("LLID", LLID);
                                     p.Add("LID", LedgerID);

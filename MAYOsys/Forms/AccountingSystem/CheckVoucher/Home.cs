@@ -26,11 +26,17 @@ namespace MAYOsys.Forms.AccountingSystem
 
         public Home()
         {
+            mys.ErrorOccured += Mys_ErrorOccured;
             InitializeComponent();
             LoadFieldInitialize();
             cbMonth.SelectedIndex = 0;
             CheckForIllegalCrossThreadCalls = false;
             BindDetail();
+        }
+
+        private void Mys_ErrorOccured(AAJdbController.ErrorMessage e)
+        {
+            MessageBox.Show(e.ExceptionMessage);
         }
 
         void LoadFieldInitialize()
@@ -125,11 +131,11 @@ namespace MAYOsys.Forms.AccountingSystem
                 return;
             }
             int LastLedgerID = 0;
-            mys.Query("select max(id) from tbl_ledger").ForEach(r =>
+            mys.Query("select max(id) from tbl_ckledger").ForEach(r =>
             {
                 LastLedgerID = r[0] == DBNull.Value ? 1 : (int)r[0] + 1;
             });
-            var LID =  mys.Insert("tbl_Ledger", p =>
+            var LID =  mys.Insert("tbl_CKLedger", p =>
             {
                 var cvFormat = Convert.ToDateTime(dtpLDate.Text);
                 p.Add("SalesNo", $"{cvFormat:yy}{cvFormat:MM}{LastLedgerID}");

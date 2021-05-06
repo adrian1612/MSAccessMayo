@@ -19,7 +19,6 @@ namespace MAYOsys.Forms.AccountingSystem
         public JobOrderAssignment()
         {
             InitializeComponent();
-            cbLocation.SelectedIndex = 0;
         }
 
         private DataTable table = new DataTable();
@@ -34,7 +33,8 @@ namespace MAYOsys.Forms.AccountingSystem
                     cbLocation.Items.Add(c.ToString());
                 }
             }
-            
+            cbLocation.SelectedIndex = cbLocation.Items.Count <= 0 ? -1 : 0;
+
         }
 
         private void btnSubmit_Click(object sender, EventArgs e)
