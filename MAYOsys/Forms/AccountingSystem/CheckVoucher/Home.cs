@@ -132,7 +132,7 @@ namespace MAYOsys.Forms.AccountingSystem
             s.Query("select max(id) from tbl_ckledger").ForEach(r =>
             {
                 LastLedgerID = r[0] == DBNull.Value ? 1 : (int)r[0] + 1;
-            });
+            }); 
             var LID =  s.Insert("tbl_CKLedger", p =>
             {
                 var cvFormat = Convert.ToDateTime(dtpLDate.Text);
