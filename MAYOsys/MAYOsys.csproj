@@ -56,16 +56,28 @@
     <Compile Include="Classes\AccountingSystem\LocationJO.cs" />
     <Compile Include="Classes\Convertion.cs" />
     <Compile Include="dbcontrol.cs" />
-    <Compile Include="Forms\AccountingSystem\Home.cs">
+    <Compile Include="Forms\AccountingSystem\CheckVoucher\Home.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AccountingSystem\Home.Designer.cs">
+    <Compile Include="Forms\AccountingSystem\CheckVoucher\Home.Designer.cs">
       <DependentUpon>Home.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\AccountingSystem\JobOrderAssignment.cs">
+    <Compile Include="Forms\AccountingSystem\CheckVoucher\JobOrderAssignment.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\AccountingSystem\JobOrderAssignment.Designer.cs">
+    <Compile Include="Forms\AccountingSystem\CheckVoucher\JobOrderAssignment.Designer.cs">
+      <DependentUpon>JobOrderAssignment.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AccountingSystem\JournalVoucher\Home.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AccountingSystem\JournalVoucher\Home.Designer.cs">
+      <DependentUpon>Home.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AccountingSystem\JournalVoucher\JobOrderAssignment.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AccountingSystem\JournalVoucher\JobOrderAssignment.Designer.cs">
       <DependentUpon>JobOrderAssignment.cs</DependentUpon>
     </Compile>
     <Compile Include="Loading.cs">
@@ -82,10 +94,16 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Forms\AccountingSystem\Home.resx">
+    <EmbeddedResource Include="Forms\AccountingSystem\CheckVoucher\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\AccountingSystem\JobOrderAssignment.resx">
+    <EmbeddedResource Include="Forms\AccountingSystem\CheckVoucher\JobOrderAssignment.resx">
+      <DependentUpon>JobOrderAssignment.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AccountingSystem\JournalVoucher\Home.resx">
+      <DependentUpon>Home.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AccountingSystem\JournalVoucher\JobOrderAssignment.resx">
       <DependentUpon>JobOrderAssignment.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Loading.resx">
