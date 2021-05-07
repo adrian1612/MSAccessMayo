@@ -35,10 +35,16 @@ namespace MAYOsys.Forms.AccountingSystem.CheckVoucher
         {
             SetPMax(4);
             var cv = new Home();
+            cv.DoneInsert += Cv_DoneInsert;
             cv.ProgressBarStep += Cv_ProgressBarStep;
             cv.MdiParent = this.MdiParent;
             cv.Show();
             tsProgressbar.Value = 0;
+        }
+
+        private void Cv_DoneInsert(object sender, EventArgs e)
+        {
+            LoadData();
         }
 
         private void Cv_ProgressBarStep()

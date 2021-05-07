@@ -18,7 +18,7 @@ namespace MAYOsys.Forms.AccountingSystem
     {
         public delegate void mytrigger();
         public event mytrigger ProgressBarStep;
-
+        public event EventHandler DoneInsert;
         Voucher cv = new Voucher();
         dbcontrol s = new dbcontrol();
 
@@ -171,6 +171,8 @@ namespace MAYOsys.Forms.AccountingSystem
             }, true); 
             cv.InsertCheckDetail(LID, listLocationJO);
             MessageBox.Show("Done");
+            DoneInsert?.Invoke(this, EventArgs.Empty);
+            Close();
         }
 
         void BindBankDetail()
