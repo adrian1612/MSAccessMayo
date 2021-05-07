@@ -28,7 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -69,16 +70,27 @@
             this.label2 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tsProgressBar = new System.Windows.Forms.ToolStripProgressBar();
+            this.txtAmountInWord = new System.Windows.Forms.TextBox();
+            this.txtAmount = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.btnSetAmount = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtYear)).BeginInit();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAcctLoc)).BeginInit();
             this.statusStrip1.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.label15);
+            this.groupBox1.Controls.Add(this.label14);
+            this.groupBox1.Controls.Add(this.txtAmount);
+            this.groupBox1.Controls.Add(this.txtAmountInWord);
             this.groupBox1.Controls.Add(this.groupBox3);
             this.groupBox1.Controls.Add(this.cbBank);
             this.groupBox1.Controls.Add(this.btnSubmit);
@@ -277,9 +289,9 @@
             this.groupBox2.Controls.Add(this.cbAccountTitle);
             this.groupBox2.Controls.Add(this.btnAddTitle);
             this.groupBox2.Controls.Add(this.dgvAcctLoc);
-            this.groupBox2.Location = new System.Drawing.Point(6, 225);
+            this.groupBox2.Location = new System.Drawing.Point(6, 245);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1019, 458);
+            this.groupBox2.Size = new System.Drawing.Size(1019, 438);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Location Data Entry";
@@ -291,7 +303,7 @@
             this.columnHeader2});
             this.lvJOAssign.Location = new System.Drawing.Point(6, 73);
             this.lvJOAssign.Name = "lvJOAssign";
-            this.lvJOAssign.Size = new System.Drawing.Size(232, 378);
+            this.lvJOAssign.Size = new System.Drawing.Size(232, 357);
             this.lvJOAssign.TabIndex = 20;
             this.lvJOAssign.UseCompatibleStateImageBehavior = false;
             this.lvJOAssign.View = System.Windows.Forms.View.Details;
@@ -400,21 +412,23 @@
             this.dgvAcctLoc.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2});
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle5.Format = "C2";
-            dataGridViewCellStyle5.NullValue = "0";
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvAcctLoc.DefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle4.Format = "C2";
+            dataGridViewCellStyle4.NullValue = "0";
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvAcctLoc.DefaultCellStyle = dataGridViewCellStyle4;
             this.dgvAcctLoc.Location = new System.Drawing.Point(244, 73);
             this.dgvAcctLoc.Name = "dgvAcctLoc";
             this.dgvAcctLoc.RowHeadersVisible = false;
-            this.dgvAcctLoc.Size = new System.Drawing.Size(769, 378);
+            this.dgvAcctLoc.Size = new System.Drawing.Size(769, 357);
             this.dgvAcctLoc.TabIndex = 0;
+            this.dgvAcctLoc.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAcctLoc_CellContentClick);
+            this.dgvAcctLoc.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvAcctLoc_CellMouseUp);
             this.dgvAcctLoc.CellStateChanged += new System.Windows.Forms.DataGridViewCellStateChangedEventHandler(this.dgvAcctLoc_CellStateChanged);
             // 
             // Column1
@@ -439,7 +453,8 @@
             this.txtParticular.Location = new System.Drawing.Point(105, 88);
             this.txtParticular.Multiline = true;
             this.txtParticular.Name = "txtParticular";
-            this.txtParticular.Size = new System.Drawing.Size(294, 130);
+            this.txtParticular.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtParticular.Size = new System.Drawing.Size(294, 60);
             this.txtParticular.TabIndex = 7;
             // 
             // label4
@@ -504,6 +519,56 @@
             this.tsProgressBar.Size = new System.Drawing.Size(200, 16);
             this.tsProgressBar.Step = 1;
             // 
+            // txtAmountInWord
+            // 
+            this.txtAmountInWord.Location = new System.Drawing.Point(105, 154);
+            this.txtAmountInWord.Multiline = true;
+            this.txtAmountInWord.Name = "txtAmountInWord";
+            this.txtAmountInWord.ReadOnly = true;
+            this.txtAmountInWord.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtAmountInWord.Size = new System.Drawing.Size(294, 35);
+            this.txtAmountInWord.TabIndex = 25;
+            // 
+            // txtAmount
+            // 
+            this.txtAmount.Location = new System.Drawing.Point(105, 197);
+            this.txtAmount.Name = "txtAmount";
+            this.txtAmount.ReadOnly = true;
+            this.txtAmount.Size = new System.Drawing.Size(148, 22);
+            this.txtAmount.TabIndex = 26;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(16, 159);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(39, 14);
+            this.label14.TabIndex = 27;
+            this.label14.Text = "Pesos";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(16, 201);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(49, 14);
+            this.label15.TabIndex = 28;
+            this.label15.Text = "Amount";
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnSetAmount});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(138, 26);
+            // 
+            // btnSetAmount
+            // 
+            this.btnSetAmount.Name = "btnSetAmount";
+            this.btnSetAmount.Size = new System.Drawing.Size(137, 22);
+            this.btnSetAmount.Text = "Set Amount";
+            this.btnSetAmount.Click += new System.EventHandler(this.btnSetAmount_Click);
+            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
@@ -527,6 +592,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvAcctLoc)).EndInit();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -574,5 +640,11 @@
         private System.Windows.Forms.ComboBox cbBank;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.TextBox txtAmount;
+        private System.Windows.Forms.TextBox txtAmountInWord;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem btnSetAmount;
     }
 }

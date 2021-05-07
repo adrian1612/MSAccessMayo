@@ -1,4 +1,5 @@
-﻿using MAYOsys.Classes.AccountingSystem;
+﻿using MAYOsys.Classes;
+using MAYOsys.Classes.AccountingSystem;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -165,6 +166,8 @@ namespace MAYOsys.Forms.AccountingSystem
                 p.Add("Particular", txtParticular.Text);
                 p.Add("Bank", cbBank.SelectedValue.ToString());
                 p.Add("CheckNo", txtCheckNo.Text);
+                p.Add("Amount", txtAmount.Text);
+                p.Add("AmountInWord", txtAmountInWord.Text);
             }, true); 
             cv.InsertCheckDetail(LID, listLocationJO);
             MessageBox.Show("Done");
@@ -186,6 +189,37 @@ namespace MAYOsys.Forms.AccountingSystem
         private void dgvAcctLoc_CellStateChanged(object sender, DataGridViewCellStateChangedEventArgs e)
         {
             SummaryInfo();
+        }
+
+        private void dgvAcctLoc_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+            
+        }
+
+        private void dgvAcctLoc_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            foreach (DataGridViewCell r in dgvAcctLoc.SelectedCells)
+            {
+                if (r.OwningColumn.HeaderText == "Credit" && e.Button == MouseButtons.Right && !string.IsNullOrEmpty(r.Value.ToString()))
+                {
+                    contextMenuStrip1.Show(Cursor.Position);
+                }
+            }
+           
+        }
+
+        Convertion conv = new Convertion();
+        private void btnSetAmount_Click(object sender, EventArgs e)
+        {
+            foreach (DataGridViewCell r in dgvAcctLoc.SelectedCells)
+            {
+                if (r.OwningColumn.HeaderText == "Credit")
+                {
+                    txtAmountInWord.Text = $"{conv.changeCurrencyToWords(Convert.ToDouble(r.Value))}";
+                    txtAmount.Text = $"{r.Value}";
+                }
+            }
         }
     }
 }
