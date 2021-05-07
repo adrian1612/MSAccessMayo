@@ -191,12 +191,6 @@ namespace MAYOsys.Forms.AccountingSystem
             SummaryInfo();
         }
 
-        private void dgvAcctLoc_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            
-            
-        }
-
         private void dgvAcctLoc_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
         {
             foreach (DataGridViewCell r in dgvAcctLoc.SelectedCells)

@@ -28,8 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnSubmit = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.cbcheckno = new System.Windows.Forms.ComboBox();
@@ -60,7 +61,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tsProgressBar = new System.Windows.Forms.ToolStripProgressBar();
-            this.btnSubmit = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.txtYear)).BeginInit();
@@ -86,10 +86,20 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Location = new System.Drawing.Point(12, 13);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1031, 702);
+            this.groupBox1.Size = new System.Drawing.Size(1031, 586);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Accounting System";
+            // 
+            // btnSubmit
+            // 
+            this.btnSubmit.Location = new System.Drawing.Point(443, 170);
+            this.btnSubmit.Name = "btnSubmit";
+            this.btnSubmit.Size = new System.Drawing.Size(211, 36);
+            this.btnSubmit.TabIndex = 26;
+            this.btnSubmit.Text = "Submit";
+            this.btnSubmit.UseVisualStyleBackColor = true;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // groupBox3
             // 
@@ -201,9 +211,9 @@
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.cbAccountTitle);
             this.groupBox2.Controls.Add(this.btnAddTitle);
-            this.groupBox2.Location = new System.Drawing.Point(6, 238);
+            this.groupBox2.Location = new System.Drawing.Point(6, 221);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1019, 458);
+            this.groupBox2.Size = new System.Drawing.Size(1019, 356);
             this.groupBox2.TabIndex = 8;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Location Data Entry";
@@ -218,20 +228,20 @@
             this.dgvAcctLoc.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Column1,
             this.Column2});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.Format = "C2";
-            dataGridViewCellStyle4.NullValue = "0";
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvAcctLoc.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle1.Format = "C2";
+            dataGridViewCellStyle1.NullValue = "0";
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvAcctLoc.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvAcctLoc.Location = new System.Drawing.Point(244, 74);
             this.dgvAcctLoc.Name = "dgvAcctLoc";
             this.dgvAcctLoc.RowHeadersVisible = false;
-            this.dgvAcctLoc.Size = new System.Drawing.Size(769, 378);
+            this.dgvAcctLoc.Size = new System.Drawing.Size(769, 273);
             this.dgvAcctLoc.TabIndex = 21;
             this.dgvAcctLoc.CellStateChanged += new System.Windows.Forms.DataGridViewCellStateChangedEventHandler(this.dgvAcctLoc_CellStateChanged);
             // 
@@ -259,7 +269,7 @@
             this.columnHeader2});
             this.lvJOAssign.Location = new System.Drawing.Point(6, 73);
             this.lvJOAssign.Name = "lvJOAssign";
-            this.lvJOAssign.Size = new System.Drawing.Size(232, 378);
+            this.lvJOAssign.Size = new System.Drawing.Size(232, 273);
             this.lvJOAssign.TabIndex = 20;
             this.lvJOAssign.UseCompatibleStateImageBehavior = false;
             this.lvJOAssign.View = System.Windows.Forms.View.Details;
@@ -363,7 +373,7 @@
             this.txtParticular.Location = new System.Drawing.Point(105, 93);
             this.txtParticular.Multiline = true;
             this.txtParticular.Name = "txtParticular";
-            this.txtParticular.Size = new System.Drawing.Size(294, 130);
+            this.txtParticular.Size = new System.Drawing.Size(294, 113);
             this.txtParticular.TabIndex = 7;
             // 
             // label4
@@ -397,7 +407,7 @@
             // 
             this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.tsProgressBar});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 718);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 605);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(1055, 22);
             this.statusStrip1.SizingGrip = false;
@@ -410,21 +420,11 @@
             this.tsProgressBar.Name = "tsProgressBar";
             this.tsProgressBar.Size = new System.Drawing.Size(200, 16);
             // 
-            // btnSubmit
-            // 
-            this.btnSubmit.Location = new System.Drawing.Point(443, 170);
-            this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(211, 36);
-            this.btnSubmit.TabIndex = 26;
-            this.btnSubmit.Text = "Submit";
-            this.btnSubmit.UseVisualStyleBackColor = true;
-            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
-            // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1055, 740);
+            this.ClientSize = new System.Drawing.Size(1055, 627);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.groupBox1);
             this.DoubleBuffered = true;

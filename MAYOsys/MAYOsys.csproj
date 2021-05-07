@@ -73,6 +73,12 @@
     <Compile Include="Classes\AccountingSystem\VoucherInfo.cs" />
     <Compile Include="Classes\Convertion.cs" />
     <Compile Include="dbcontrol.cs" />
+    <Compile Include="Forms\AccountingSystem\CheckVoucher\Dashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AccountingSystem\CheckVoucher\Dashboard.Designer.cs">
+      <DependentUpon>Dashboard.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\AccountingSystem\CheckVoucher\Home.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -111,6 +117,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Forms\AccountingSystem\CheckVoucher\Dashboard.resx">
+      <DependentUpon>Dashboard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\AccountingSystem\CheckVoucher\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>

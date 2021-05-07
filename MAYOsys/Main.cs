@@ -26,12 +26,15 @@ namespace MAYOsys
 
         private void checkVoucherToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            SetPMax(4);
-            var cv = new Forms.AccountingSystem.Home();
-            cv.ProgressBarStep += Cv_ProgressBarStep1;
-            cv.MdiParent = this;
-            cv.Show();
-            tsProgressbar.Value = 0;
+            //SetPMax(4);
+            //var cv = new Forms.AccountingSystem.Home();
+            //cv.ProgressBarStep += Cv_ProgressBarStep1;
+            //cv.MdiParent = this;
+            //cv.Show();
+            //tsProgressbar.Value = 0;
+            var cvDashboard = new Forms.AccountingSystem.CheckVoucher.Dashboard();
+            cvDashboard.MdiParent = this;
+            cvDashboard.Show();
         }
 
         private void Cv_ProgressBarStep1()

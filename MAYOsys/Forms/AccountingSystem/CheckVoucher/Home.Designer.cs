@@ -427,7 +427,6 @@
             this.dgvAcctLoc.RowHeadersVisible = false;
             this.dgvAcctLoc.Size = new System.Drawing.Size(769, 257);
             this.dgvAcctLoc.TabIndex = 0;
-            this.dgvAcctLoc.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvAcctLoc_CellContentClick);
             this.dgvAcctLoc.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvAcctLoc_CellMouseUp);
             this.dgvAcctLoc.CellStateChanged += new System.Windows.Forms.DataGridViewCellStateChangedEventHandler(this.dgvAcctLoc_CellStateChanged);
             // 
