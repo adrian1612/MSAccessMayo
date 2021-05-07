@@ -216,7 +216,7 @@ namespace MAYOsys.Forms.AccountingSystem
             {
                 if (r.OwningColumn.HeaderText == "Credit")
                 {
-                    txtAmountInWord.Text = $"{conv.changeCurrencyToWords(Convert.ToDouble(r.Value))}";
+                    txtAmountInWord.Text = $"*{conv.changeCurrencyToWords(Convert.ToDouble(r.Value))}*";
                     txtAmount.Text = $"{r.Value}";
                 }
             }
