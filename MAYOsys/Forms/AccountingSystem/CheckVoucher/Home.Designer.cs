@@ -31,6 +31,10 @@
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.txtAmount = new System.Windows.Forms.TextBox();
+            this.txtAmountInWord = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cbBank = new System.Windows.Forms.ComboBox();
@@ -70,10 +74,6 @@
             this.label2 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tsProgressBar = new System.Windows.Forms.ToolStripProgressBar();
-            this.txtAmountInWord = new System.Windows.Forms.TextBox();
-            this.txtAmount = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btnSetAmount = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
@@ -118,6 +118,42 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Accounting System";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(16, 201);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(49, 14);
+            this.label15.TabIndex = 28;
+            this.label15.Text = "Amount";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(16, 159);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(39, 14);
+            this.label14.TabIndex = 27;
+            this.label14.Text = "Pesos";
+            // 
+            // txtAmount
+            // 
+            this.txtAmount.Location = new System.Drawing.Point(105, 197);
+            this.txtAmount.Name = "txtAmount";
+            this.txtAmount.ReadOnly = true;
+            this.txtAmount.Size = new System.Drawing.Size(148, 22);
+            this.txtAmount.TabIndex = 26;
+            // 
+            // txtAmountInWord
+            // 
+            this.txtAmountInWord.Location = new System.Drawing.Point(105, 154);
+            this.txtAmountInWord.Multiline = true;
+            this.txtAmountInWord.Name = "txtAmountInWord";
+            this.txtAmountInWord.ReadOnly = true;
+            this.txtAmountInWord.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.txtAmountInWord.Size = new System.Drawing.Size(294, 35);
+            this.txtAmountInWord.TabIndex = 25;
             // 
             // groupBox3
             // 
@@ -518,42 +554,6 @@
             this.tsProgressBar.Size = new System.Drawing.Size(200, 16);
             this.tsProgressBar.Step = 1;
             // 
-            // txtAmountInWord
-            // 
-            this.txtAmountInWord.Location = new System.Drawing.Point(105, 154);
-            this.txtAmountInWord.Multiline = true;
-            this.txtAmountInWord.Name = "txtAmountInWord";
-            this.txtAmountInWord.ReadOnly = true;
-            this.txtAmountInWord.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtAmountInWord.Size = new System.Drawing.Size(294, 35);
-            this.txtAmountInWord.TabIndex = 25;
-            // 
-            // txtAmount
-            // 
-            this.txtAmount.Location = new System.Drawing.Point(105, 197);
-            this.txtAmount.Name = "txtAmount";
-            this.txtAmount.ReadOnly = true;
-            this.txtAmount.Size = new System.Drawing.Size(148, 22);
-            this.txtAmount.TabIndex = 26;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(16, 159);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(39, 14);
-            this.label14.TabIndex = 27;
-            this.label14.Text = "Pesos";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(16, 201);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(49, 14);
-            this.label15.TabIndex = 28;
-            this.label15.Text = "Amount";
-            // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -579,7 +579,7 @@
             this.Font = new System.Drawing.Font("Calibri", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Name = "Home";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "MHCI Check Voucher © 2021 by Adrian Jaspio";
+            this.Text = "MHCI Check Voucher © 2021 ";
             this.Load += new System.EventHandler(this.Home_Load_1);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
