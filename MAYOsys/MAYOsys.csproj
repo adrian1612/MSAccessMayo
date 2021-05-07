@@ -51,9 +51,12 @@
       <HintPath>..\packages\AAJControl.1.0.10\lib\net45\AAJdbController.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=12.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL" />
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -72,12 +75,26 @@
     <Compile Include="Classes\AccountingSystem\LocationJO.cs" />
     <Compile Include="Classes\AccountingSystem\VoucherInfo.cs" />
     <Compile Include="Classes\Convertion.cs" />
+    <Compile Include="CVDataSet.cs">
+      <DependentUpon>CVDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="CVDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CVDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="dbcontrol.cs" />
     <Compile Include="Forms\AccountingSystem\CheckVoucher\Dashboard.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Forms\AccountingSystem\CheckVoucher\Dashboard.Designer.cs">
       <DependentUpon>Dashboard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\AccountingSystem\CheckVoucher\Details.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AccountingSystem\CheckVoucher\Details.Designer.cs">
+      <DependentUpon>Details.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\AccountingSystem\CheckVoucher\Home.cs">
       <SubType>Form</SubType>
@@ -91,6 +108,7 @@
     <Compile Include="Forms\AccountingSystem\CheckVoucher\JobOrderAssignment.Designer.cs">
       <DependentUpon>JobOrderAssignment.cs</DependentUpon>
     </Compile>
+    <Compile Include="SummaryReport.cs" />
     <Compile Include="Forms\AccountingSystem\JournalVoucher\Home.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -120,6 +138,9 @@
     <EmbeddedResource Include="Forms\AccountingSystem\CheckVoucher\Dashboard.resx">
       <DependentUpon>Dashboard.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AccountingSystem\CheckVoucher\Details.resx">
+      <DependentUpon>Details.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Forms\AccountingSystem\CheckVoucher\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
@@ -147,6 +168,18 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Report\CVReport.rdlc" />
+    <None Include="CVDataSet.xsc">
+      <DependentUpon>CVDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="CVDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>CVDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="CVDataSet.xss">
+      <DependentUpon>CVDataSet.xsd</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -172,6 +205,9 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

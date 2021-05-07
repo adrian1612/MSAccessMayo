@@ -7,38 +7,41 @@ using System.Threading.Tasks;
 
 namespace MAYOsys.Classes.AccountingSystem
 {
-    class Ledger
+    public class Ledger
     {
+        dbcontrol s = new dbcontrol();
         Convertion conv = new Convertion();
-        public int      ID          { get; set; }
-        public string   SalesNo     { get; set; }
-        public DateTime LDate       { get; set; }
-        public string   Month       { get; set; }
-        public string   Year        { get; set; }
-        public string   Voucher     { get; set; }
-        public string   Payee       { get; set; }
-        public string   Customer    { get; set; }
-        public string   Tenant      { get; set; }
-        public string   Particular  { get; set; }
-        public string   RefDoc      { get; set; }
-        public DateTime DueDate     { get; set; }
-        public DateTime BankDate    { get; set; }
-        public string   Bank        { get; set; }
-        public string   AccountNo   { get; set; }
-        public string   Branch      { get; set; }
-        public string   CheckNo     { get; set; }
-        public string   Remarks     { get; set; }
-        public string   Address     { get; set; }
-        public string   TIN         { get; set; }
-        public string   PONo        { get; set; }
-        //public string AmountInWords { get { return conv.changeCurrencyToWords() } }
+        public int      ID              { get; set; }
+        public string   SalesNo         { get; set; }
+        public DateTime LDate           { get; set; }
+        public string   Month           { get; set; }
+        public string   Year            { get; set; }
+        public string   Voucher         { get; set; }
+        public string   Payee           { get; set; }
+        public string   Customer        { get; set; }
+        public string   Tenant          { get; set; }
+        public string   Particular      { get; set; }
+        public string   RefDoc          { get; set; }
+        public DateTime DueDate         { get; set; }
+        public DateTime BankDate        { get; set; }
+        public string   Bank            { get; set; }
+        public string   AccountNo       { get; set; }
+        public string   Branch          { get; set; }
+        public string   CheckNo         { get; set; }
+        public string   Remarks         { get; set; }
+        public string   Address         { get; set; }
+        public string   TIN             { get; set; }
+        public string   PONo            { get; set; }
+        public decimal  Amount          { get; set; }
+        public string   AmountInWord    { get; set; }
+        public List<LedgerLocation> Location { get; set; }
 
         public Ledger()
         {
 
         }
 
-        public Ledger(int ID, string SalesNo, DateTime LDate, string Month, string Year, string Voucher, string Payee, string Customer, string Tenant, string Particular, string RefDoc, DateTime DueDate, DateTime BankDate, string Bank, string AccountNo, string Branch, string CheckNo, string Remarks, string Address, string TIN, string PONo)
+        public Ledger(int ID, string SalesNo, DateTime LDate, string Month, string Year, string Voucher, string Payee, string Customer, string Tenant, string Particular, string RefDoc, DateTime DueDate, DateTime BankDate, string Bank, string AccountNo, string Branch, string CheckNo, string Remarks, string Address, string TIN, string PONo, decimal Amount, string AmountInWord)
         {
             this.ID = ID;
             this.SalesNo = SalesNo;
@@ -61,9 +64,11 @@ namespace MAYOsys.Classes.AccountingSystem
             this.Address = Address;
             this.TIN = TIN;
             this.PONo = PONo;
+            this.Amount           =Amount        ;
+           this.AmountInWord     =AmountInWord  ;
         }
 
-        public Ledger(string SalesNo, DateTime LDate, string Month, string Year, string Voucher, string Payee, string Customer, string Tenant, string Particular, string RefDoc, DateTime DueDate, DateTime BankDate, string Bank, string AccountNo, string Branch, string CheckNo, string Remarks, string Address, string TIN, string PONo)
+        public Ledger(string SalesNo, DateTime LDate, string Month, string Year, string Voucher, string Payee, string Customer, string Tenant, string Particular, string RefDoc, DateTime DueDate, DateTime BankDate, string Bank, string AccountNo, string Branch, string CheckNo, string Remarks, string Address, string TIN, string PONo, decimal Amount, string AmountInWord)
         {
             this.SalesNo = SalesNo;
             this.LDate = LDate;
@@ -85,31 +90,45 @@ namespace MAYOsys.Classes.AccountingSystem
             this.Address = Address;
             this.TIN = TIN;
             this.PONo = PONo;
+            this.Amount = Amount;
+            this.AmountInWord = AmountInWord;
         }
 
-		public Ledger(DataRow r)
-		{
-			ID = (int)r["ID"];
-			SalesNo = r["SalesNo"].ToString();
-			LDate = (DateTime)r["LDate"];
-			Month = r["Month"].ToString();
-			Year = r["Year"].ToString();
-			Voucher = r["Voucher"].ToString();
-			Payee = r["Payee"].ToString();
-			Customer = r["Customer"].ToString();
-			Tenant = r["Tenant"].ToString();
-			Particular = r["Particular"].ToString();
-			RefDoc = r["RefDoc"].ToString();
-			DueDate = (DateTime)r["DueDate"];
-			BankDate = (DateTime)r["BankDate"];
-			Bank = r["Bank"].ToString();
-			AccountNo = r["AccountNo"].ToString();
-			Branch = r["Branch"].ToString();
-			CheckNo = r["CheckNo"].ToString();
-			Remarks = r["Remarks"].ToString();
-			Address = r["Address"].ToString();
-			TIN = r["TIN"].ToString();
-			PONo = r["PONo"].ToString();
-		}
+        public Ledger FindLedger(int ID)
+        {
+            var item = new Ledger();
+            s.Query("select * from tbl_ckledger where ID = @ID", p => p.Add("@ID", ID)).ForEach(r =>
+            {
+                item = new Ledger(r);
+            });
+            return item;
+        }
+
+        public Ledger(DataRow r)
+        {
+            ID = (int)r["ID"];
+            SalesNo = r["SalesNo"].ToString();
+            LDate = (DateTime)r["LDate"];
+            Month = r["Month"].ToString();
+            Year = r["Year"].ToString();
+            Voucher = r["Voucher"].ToString();
+            Payee = r["Payee"].ToString();
+            Customer = r["Customer"].ToString();
+            Tenant = r["Tenant"].ToString();
+            Particular = r["Particular"].ToString();
+            RefDoc = r["RefDoc"].ToString();
+            DueDate = (DateTime)r["DueDate"];
+            BankDate = (DateTime)r["BankDate"];
+            Bank = r["Bank"].ToString();
+            AccountNo = r["AccountNo"].ToString();
+            Branch = r["Branch"].ToString();
+            CheckNo = r["CheckNo"].ToString();
+            Remarks = r["Remarks"].ToString();
+            Address = r["Address"].ToString();
+            TIN = r["TIN"].ToString();
+            PONo = r["PONo"].ToString();
+            Amount = (decimal)r["Amount"];
+            AmountInWord = r["AmountInWord"].ToString();
+        }
     }
 }

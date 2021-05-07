@@ -32,22 +32,24 @@ namespace MAYOsys
             //cv.MdiParent = this;
             //cv.Show();
             //tsProgressbar.Value = 0;
+            SetPMax(1);
             var cvDashboard = new Forms.AccountingSystem.CheckVoucher.Dashboard();
+            cvDashboard.TriggerLoading += CvDashboard_TriggerLoading;
             cvDashboard.MdiParent = this;
             cvDashboard.Show();
+            tsProgressbar.Value = 0;
         }
 
-        private void Cv_ProgressBarStep1()
+        private void CvDashboard_TriggerLoading(object sender, EventArgs e)
         {
             tsProgressbar.PerformStep();
         }
-
 
         private void journalVoucherToolStripMenuItem_Click(object sender, EventArgs e)
         {
             SetPMax(5);
             var jv = new Forms.AccountingSystem.JournalVoucher.Home();
-            jv.ProgressBarStep += Cv_ProgressBarStep1;
+           
             jv.MdiParent = this;
             jv.Show();
             tsProgressbar.Value = 0;

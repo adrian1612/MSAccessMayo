@@ -4,17 +4,17 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace MAYOsys.Classes.AccountingSystem
 {
-	class LedgerLocation
+	public class LedgerLocation
 	{
+        dbcontrol s = new dbcontrol();
 		public int		ID			{ get; set; }
 		public int		LID			{ get; set; }
-		public int		JOID		{ get; set; }
 		public string	Location	{ get; set; }
+        public List<AccountTitle> AccountTitles { get; set; }
 
-		public LedgerLocation()
+        public LedgerLocation()
 		{
 
 		}
@@ -23,22 +23,29 @@ namespace MAYOsys.Classes.AccountingSystem
 		{
 			this.ID			 = ID		;
 			this.LID			 = LID		;
-			this.JOID		 = JOID		;
 			this.Location = Location;
 		}
 
 		public LedgerLocation(int LID, int JOID, string Location)
 		{
 			this.LID = LID;
-			this.JOID = JOID;
 			this.Location = Location;
 		}
+
+        public List<LedgerLocation> ListLocation(int ID)
+        {
+            var list = new List<LedgerLocation>();
+            s.Query("select * from tbl_ckledgerLocation where ID = @ID", p => p.Add("@ID", ID)).ForEach(r => 
+            {
+                list.Add(new LedgerLocation(r));
+            });
+            return list;
+        }
 
 		public LedgerLocation(DataRow r)
 		{
 			ID = (int)r["ID"];
 			LID = (int)r["LID"];
-			JOID = (int)r["JOID"];
 			Location = r["Location"].ToString();
 		}
 	}

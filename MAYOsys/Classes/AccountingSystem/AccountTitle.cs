@@ -7,8 +7,9 @@ using System.Threading.Tasks;
 
 namespace MAYOsys.Classes.AccountingSystem
 {
-	class AccountTitle
+	public class AccountTitle
 	{
+        dbcontrol s = new dbcontrol();
 		public int		ID				{ get; set; }
 		public int		LLID			{ get; set; }
 		public int		LID				{ get; set; }
@@ -39,6 +40,16 @@ namespace MAYOsys.Classes.AccountingSystem
 			this.Debit = Debit;
 			this.Credit = Credit;
 		}
+
+        public List<AccountTitle> ListAccountTitle(int LID)
+        {
+            var list = new List<AccountTitle>();
+            s.Query("select * from tbl_CKAccountTitle where LID = @LID", p =>
+            {
+                p.Add("@LID", LID);
+            });
+            return list;
+        }
 
         public AccountTitle(DataRow r)
         {
