@@ -83,7 +83,6 @@ namespace MAYOsys.Forms.AccountingSystem.CheckVoucher
 
         void SearchRecord(string search = "")
         {
-            DataTable mydata = (DataTable)dgvCVDashboard.DataSource;  
             string filter = "";
             foreach (DataColumn c in data.Columns)
             {
@@ -100,7 +99,7 @@ namespace MAYOsys.Forms.AccountingSystem.CheckVoucher
                     filter += $" [{c}] between '{search}' and '{search}' or ";
                 }
             }
-            mydata.DefaultView.RowFilter = filter.Substring(0, filter.Length - 3);
+            data.DefaultView.RowFilter = filter.Substring(0, filter.Length - 3);
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
